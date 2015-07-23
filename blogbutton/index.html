@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Web2.0 - Logo Creatr</title>
+<meta http-equiv="imagetoolbar" content="no" />
+<script type="text/javascript" language='JavaScript' src="/scripts/prototype.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/default.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/colorpicker.js"></script>
+<!xscript type="text/javascript" language='JavaScript' src="/creatr/colors/colorpicker.js"></!xscript>
+<link rel="stylesheet" type="text/css" href="/scripts/plugin.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/default.css" />
+
+<script type="text/javascript" language='JavaScript'>
+<!-- //
+function CreateLogo() {
+  var ltext     = $F('ltext');
+  var rtext     = $F('rtext');
+  var lfcolor   = $F('lfcolor');
+  var rfcolor   = $F('rfcolor');
+  var lbcolor   = $F('lbcolor');
+  var rbcolor   = $F('rbcolor');
+  var lspace    = $F('lspace');
+  var rspace    = $F('rspace');
+  var icolor    = $F('icolor');
+  var ocolor    = $F('ocolor');
+  var lwidth    = $F('lwidth');
+  var font_face = $F('font_face');
+//  alert(logo_name);
+  var params = "";
+  
+  params += 'ltext=' + ltext;
+  params += '&rtext=' + rtext;
+  params += '&lfcolor=' + lfcolor;
+  params += '&rfcolor=' + rfcolor;
+  params += '&lbcolor=' + lbcolor;
+  params += '&rbcolor=' + rbcolor;
+  params += '&lspace=' + lspace;
+  params += '&rspace=' + rspace;
+  params += '&icolor=' + icolor;
+  params += '&ocolor=' + ocolor;
+  params += '&lwidth=' + lwidth;
+  params += '&font_face=' + font_face;
+//  alert(encodeURIComponent(params));
+  $('myButton').innerHTML = '<img src="/images/creating.png">';
+  $('myButton').visible = 'visibled';
+  LoaderBlogButton(params, 'myButton', 0);
+}
+// -->
+
+function colpicker(el) {
+//  alert(getX(el) + ' x ' + getY(el));
+  Element.setTop($('pluginbg').id, Element.getTop(el));
+  Element.setLeft($('pluginbg').id, Element.getLeft(el)+Element.getWidth(el));
+  Element.setTop($('plugin').id, Element.getTop(el));
+  Element.setLeft($('plugin').id, Element.getLeft(el)+Element.getWidth(el));
+  $('pluginbg').style.display = 'block';
+  $('plugin').style.display = 'block';
+  activefield = el;
+}
+
+//function closepicker() {
+//  return;
+//}
+
+</script>
+<style type="text/css" media="screen">
+.yiggbutton {
+/*  float:left; */
+  float:right;
+  padding:3px 5px 5px 5px;
+}
+</style>
+</head>
+<body>
+<div id="header">
+<div id="description">
+<script type="text/javascript">
+digg_url = 'http://creatr.cc/blogbutton';
+//digg_title = 'TITLE';
+//digg_bodytext = 'BODY';
+//digg_topic = 'TOPIC';
+</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>
+</div>
+<div class="yiggbutton">
+<script>
+yigg_url = 'http://creatr.cc/blogbutton/';
+</script>
+<script src="http://yigg.de/emb_ycount.js"></script>
+</div>
+<div id=booklets>
+<a href="http://ho.tli.st/post.php?tb=0.1.0&action=add&address=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator&description=" target=_blank><img src="/images/hotlist.png"></a>
+<a href="http://del.icio.us/post?url=http%3A%2F%2Fcreatr.cc%2Fcreatr%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/delicious.png"></a>
+<a href="http://www.furl.net/storeIt.jsp?u=http%3A%2F%2Fcreatr.cc%2F&t=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/furl.png"></a>
+<a href="http://www.scuttle.org/bookmarks.php/maxpower?action=add&address=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/scuttle.png"></a>
+<a href="http://blogmarks.net/my/new.php?mini=1&simple=1&url=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/blogmarks.png"></a>
+<a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fcreatr.cc%2Fcreatr%2F&title=Web%202.0%20Logo%20Generator"><img src="/images/icon_su.gif"></a>
+<a href="http://www.mister-wong.de/index.php?action=addurl&bm_url=http%3A%2F%2Fcreatr.cc%2Fcreatr%2F&bm_description=Web%202.0%20Logo%20Generator"><img src="/images/wong18.gif"></a>
+<br>
+<br>
+<a href="http://ho.tli.st/help/" target=_blank>save the bookmark...</a><br>
+</div>
+</div>
+<div id=topbar>
+  <a href="/">Home</a>
+  <a href="/creatr/">Creatr</a>
+  <a href="/backgrounds/">Backgrounds</a>
+  <a href="/blogbutton/">Blogbutton</a>
+  <a href="/blog/">Blog</a>
+  <a href="/help/">Help</a>
+  <a href="/hof/">Hall of fame</a>
+  <a href="/about/">Contact</a>
+</div>
+<div id="bodyMain">
+  <div id=bodyMiddle>
+    <div id=generator>
+    <div id=form2>
+      <form target=preview onsubmit="CreateLogo(); return false;">
+      <input id="logo_type" type="hidden" name="logo_type" value="1">
+      <div id="formcontainer"><div align=center>
+      <table align=center border=0 cellpadding=0 cellspacing=0>
+        <tr>
+          <td align=center id=myButton colspan=2>
+            <img src="rssvalid.gif">
+          </td>
+        </tr>
+        <tr id="rButtonText" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Left Text:<br>
+            <input onfocus="closepicker('plugin');" class=crtr id=ltext type="text" name="ltext" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Right Text:<br>
+            <input onfocus="closepicker('plugin');" class=crtr id=rtext type="text" name="rtext" value=""></td>
+        </tr>
+        <tr id="rButtonColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Font Color:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=lfcolor type="text" name="lfcolor" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Font Color:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=rfcolor type="text" name="rfcolor" value=""></td>
+        </tr>
+        <tr id="rButtonColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Back Color:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=lbcolor type="text" name="lbcolor" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Back Color:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=rbcolor type="text" name="rbcolor" value=""></td>
+        </tr>
+        <tr><td colspan=2>&nbsp;</td></tr>
+        <tr><td colspan=2><hr size=1></td></tr>
+        <tr><td colspan=2>&nbsp;</td></tr>
+        <tr id="rFontColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Add Space:<br>
+            <input onfocus="closepicker('plugin');" class=crtr id=lspace type="text" name="lspace" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Add Space:<br>
+            <input onfocus="closepicker('plugin');" class=crtr id=rspace type="text" name="rspace" value=""></td>
+        </tr>
+        <tr><td colspan=2>&nbsp;</td></tr>
+        <tr><td colspan=2><hr size=1></td></tr>
+        <tr><td colspan=2>&nbsp;</td></tr>
+        <tr id="rFontColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Leftbox Width:<br>
+            <input onfocus="closepicker('plugin');" class=crtr id=lwidth type="text" name="lwidth" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Font Face:<br>
+            <select onfocus="closepicker('plugin');" class=crtr id=font_face type="text" name="font_face">
+              <option value=default>Default</option>
+                          </select>
+          </td>
+        </tr>
+        <tr id="rFontColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label style="width:auto;">
+            Outer Border:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=ocolor type="text" name="ocolor" value=""></td>
+          <td class=rlabel style="width:auto;">
+            Inner Border:<br>
+            <input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=icolor type="text" name="icolor" value=""></td>
+        </tr>
+        <tr>
+          <td colspan=2 align=right>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <input onfocus="closepicker('plugin');" type="submit" value="Create Button">
+          </td>
+        </tr>
+      </table>
+      </div>
+      </div>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+<div align=center>
+<script language="javascript" src="http://box1.counter-service.de/clog/creatr//visible/no/b/n/"></script>
+<noscript>
+<a href="http://www.counter-service.de/" title="Counter von Counter-Service" target="_blank"><img src="http://box1.counter-service.de/clog/creatr/cimg/visible/no/b/n/" border="0" alt="Counter von Counter-Service" title="Counter von Counter-Service"></a>
+</noscript>
+</div>
+</div>
+
+<iframe id="pluginbg" frameborder="0" hspace="0" marginheight="0" marginwidth="0"></iframe>
+<div id="plugin" onmousedown="HSVslide('drag','plugin',event)" style="TOP: 42px; LEFT: 430px; Z-INDEX: 20; DISPLAY: none;">
+ <div id="plugCUR"></div><div id="plugHEX" onclick="copycolor();" onmousedown="stop=0; setTimeout('stop=1',100);">FFFFFF</div><div id="plugCLOSE" onmousedown="closepicker('plugin')">CLOSE</div><div id="plugOK" onclick="copycolor();">OK</div><br>
+ <div id="SV" onmousedown="HSVslide('SVslide','plugin',event)" title="Saturation + Value">
+ <div id="SVslide" style="TOP: -4px; LEFT: -4px;"><br /></div>
+ </div>
+ <form id="H" onmousedown="HSVslide('Hslide','plugin',event)" title="Hue">
+  <div id="Hslide" style="TOP: -7px; LEFT: -8px;"><br /></div>
+  <div id="Hmodel"></div>
+ </form>
+</div>
+<a href="http://www.counter-service.de/" title="Counter" onclick="window.open(this.href);return(false);">
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://counter.sc/" : "http://counter.sc/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 40;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p>Counter <img src="http://counter.sc/piwik.php?idsite=40" style="border:0" alt=""/></p></noscript></object></a>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Logo Creatr</title>
+	<atom:link href="http://creatr.cc/feed/" rel="self" type="application/rss+xml" />
+	<link>http://creatr.cc</link>
+	<description></description>
+	<lastBuildDate>Sun, 12 Apr 2015 03:17:20 +0000</lastBuildDate>
+	<language>de-DE</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.1.5</generator>
+	<item>
+		<title>Logogrösse und Transparenz</title>
+		<link>http://creatr.cc/changelog-de/logogroesse-und-transparenz/</link>
+		<comments>http://creatr.cc/changelog-de/logogroesse-und-transparenz/#comments</comments>
+		<pubDate>Sun, 08 Apr 2007 01:56:28 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Changelog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog-de/logogroesse-und-transparenz/</guid>
+		<description><![CDATA[Heute gibt es ein paar kleine Erweiterungen mit grosser Wirkung. Die 2 wichtigsten Features sind die Logogrösse und die Transparenz. Die Logogrösse kann bei jedem Logotyp eingestellt werden. Es gibt ein paar voreingestellte Grösse, die wie gewohnt bequem über eine Selectbox ausgewählt werden können. Es gibt als Voreinstellungen die Möglichkeit, das Logo um einen bestimmten [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Heute gibt es ein paar kleine Erweiterungen mit grosser Wirkung. Die 2 wichtigsten Features sind die Logogrösse und die Transparenz.</p>
+<p>Die Logogrösse kann bei jedem Logotyp eingestellt werden. Es gibt ein paar voreingestellte Grösse, die wie gewohnt bequem über eine Selectbox ausgewählt werden können. Es gibt als Voreinstellungen die Möglichkeit, das Logo um einen bestimmten Prozentsatz zwischen 90% &#8211; 10% zu verkleinern. Oder auf ein gewohntes Bannerformat zu resizen.</p>
+<p>Damit aber nicht genug. Die Voreinstellungen können überschrieben werden und so ist jedes Mass denkbar. Auch eine Vergrösserung des Logos ist machbar.</p>
+<p>Die Transparenz greift nur beim Logo Typ1. Die Transparenz wird über eine Selectbox ein- bzw. ausgeschaltet. Sollte die Transparenz nicht richtig funktionieren, weil die Transparenzfarbe eigentlich beim Logo verwendet werden soll, dann kann die Transparenzfarbe mit der Hintergrundfarbe überschrieben werden.</p>
+<p>Des weiteren wurden noch die Hintergründe allgemein nachgebessert. Insbesondere kann jetzt auch bei Typ1, Typ4 und Typ5 die Hintergrundfarbe ausgewählt werden. Allerdings ist bei jedem Logotyp ein anderer Hintergrundtyp definiert.</p>
+<p>Beim Logo Typ 1 ist der Hintergrund als &#8220;solid&#8221; definiert. Das heisst, dass eine Farbe, die als Hintergrundfarbe vergeben wird, wirkt sich unverändert so aus.</p>
+<p>Beim Logo Typ 4 enthält der Hintergrund einen leichten Verlauf in der gewählten Hintergrundfarbe.</p>
+<p>Beim Logo Typ 5 Ist der Hintergrund ein ähnliches Muster mit diagonalen Streifen, wie beim Typ3. Allerdings ohne Vorgabe und ohne Spiegel oder Form Effekt. Um einen einfarbigen Hintergrund zu erreichen, muss einfach 2x die gleiche Farbe gewählt werden.</p>
+<p>So und das wars <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /> Ich wünsch euch viel spass mit den neuen Fatures im <a title="web 2.0 Logo Generator" href="http://creatr.cc/creatr/">Web 2.0 Logo Generator</a>.</p>
+<p>P.S.: An dieser Stelle möchte ich allen danken, die sich an den Vorschläge und Fehlermeldungen beteiligt haben.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/changelog-de/logogroesse-und-transparenz/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Die neue Web 2.0 Idee</title>
+		<link>http://creatr.cc/blog-de/die-neue-web-20-idee/</link>
+		<comments>http://creatr.cc/blog-de/die-neue-web-20-idee/#comments</comments>
+		<pubDate>Wed, 28 Mar 2007 00:13:05 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+		<category><![CDATA[web 2.0]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/blog-de/die-neue-web-20-idee/</guid>
+		<description><![CDATA[Also wer auf Web 2.0 steht, der muss sich unbedingt auch timashr anschauen. Der Name sagt schon alles. Es ist eine Web 2.0 Anwendung, wie sie im Buche steht. Das Design ist schlicht, ist gespickt mit kleinen AJAX Funktionen, die grosses bewirken. Und es ist eine Seite, die in die Kategorie Social Networks fällt.]]></description>
+				<content:encoded><![CDATA[<p>Also wer auf Web 2.0 steht, der muss sich unbedingt auch <a href="http://timashr.com/" title="Mash the time" target="_blank">timashr</a> anschauen. Der Name sagt schon alles. Es ist eine Web 2.0 Anwendung, wie sie im Buche steht.</p>
+<p><img src="http://creatr.cc/wp-content/uploads/2007/03/timashr.png" alt="timashr.png" /></p>
+<p>Das Design ist schlicht, ist gespickt mit kleinen AJAX Funktionen, die grosses bewirken. Und es ist eine Seite, die in die Kategorie Social Networks fällt.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/die-neue-web-20-idee/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Logo Design Nr. 5 ready also</title>
+		<link>http://creatr.cc/blog-en/logo-design-nr-5-ready-also/</link>
+		<comments>http://creatr.cc/blog-en/logo-design-nr-5-ready-also/#comments</comments>
+		<pubDate>Wed, 28 Feb 2007 14:36:39 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (en)]]></category>
+		<category><![CDATA[Changelog (en)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog-en/logo-design-nr-5-ready-also/</guid>
+		<description><![CDATA[Well since im at it The Dino cant be missing. In oposite to the original, the shadow is a little softer, and it also seems to me, even if the font is called &#8220;yahoo&#8221; there is not necessarly Yahoo in it. But you come close to it. AND this should not be a Logo copying [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Well since im at it <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p>The Dino cant be missing.  In oposite to the original, the shadow is a little softer, and it also seems to me, even if the font is called &#8220;yahoo&#8221; there is not necessarly  Yahoo in it.  But you come close to it.  AND this should not be a Logo copying station, this should just be a small sugestion for your own Logo.</p>
+<p><img src="/images/logotype5.png" title="Logo im Yahoo Design" alt="Logo im Yahoo Design" /></p>
+<p>Even if the Yahoofont (which is realy called so <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /> ) is given, you can still choose other fonts, and you can specify the background colour and if required, insert a button.  A mirror effect is not planned.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-en/logo-design-nr-5-ready-also/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Logo Design Nr. 5 ebenfalls fertig</title>
+		<link>http://creatr.cc/blog-de/logo-design-nr-5-ebenfalls-fertig/</link>
+		<comments>http://creatr.cc/blog-de/logo-design-nr-5-ebenfalls-fertig/#comments</comments>
+		<pubDate>Wed, 28 Feb 2007 14:36:13 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+		<category><![CDATA[Changelog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog/logo-design-nr-5-ebenfalls-fertig/</guid>
+		<description><![CDATA[Na wenn man mal dran ist Der Dino darf natürlich auch nicht fehlen. Im Gegensatz zum Original ist der Schatten ein bisschen weicher. Und mir scheint so, auch wenn der Font &#8220;yahoo&#8221; heisst, ist da nicht unbedingt Yahoo drin. Aber man bekommt das schon annähernd hin. UND es soll hier ja keine Logokopierstation sein, sondern [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Na wenn man mal dran ist <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p>Der Dino darf natürlich auch nicht fehlen. Im Gegensatz zum Original ist der Schatten ein bisschen weicher. Und mir scheint so, auch wenn der Font &#8220;yahoo&#8221; heisst, ist da nicht unbedingt Yahoo drin. Aber man bekommt das schon annähernd hin. UND es soll hier ja keine Logokopierstation sein, sondern es soll hier nur eine Anregung für das eigene Logo gegeben werden <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p><img src="/images/logotype5.png" title="Logo im Yahoo Design" alt="Logo im Yahoo Design" /></p>
+<p>Auch wenn der Yahoofont, der wohl tatsächlich so heisst <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /> vorgegeben ist, kann man auch andere Fonts auswählen. Ausserdem kann man auch die Hintergrundfarbe festlegen und falls gewünscht einen Button einfügen. eine spiegelung ist nicht vorgesehen.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/logo-design-nr-5-ebenfalls-fertig/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Logo Design Nr. 4 verfügbar</title>
+		<link>http://creatr.cc/blog-de/logo-design-nr-4-verfuegbar/</link>
+		<comments>http://creatr.cc/blog-de/logo-design-nr-4-verfuegbar/#comments</comments>
+		<pubDate>Wed, 28 Feb 2007 14:25:46 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+		<category><![CDATA[Changelog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog/logo-design-nr-4-verfuegbar/</guid>
+		<description><![CDATA[Der Bigplayer darf natürlich nicht fehlen. Und so gibt es nun auch ein Logo mit den typischen Google Farben und dem Font &#8220;Catull&#8221;, der nicht wie viele meinen Googlefont oder so ähnlich heisst Das Logo ist nicht ganz so einfach zu handhaben, da die Farben einzeln definiert werden müssen. Aber vielleicht einfach mal in die [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Der Bigplayer darf natürlich nicht fehlen. Und so gibt es nun auch ein Logo mit den typischen Google Farben und dem Font &#8220;Catull&#8221;, der nicht wie viele meinen Googlefont oder so ähnlich heisst <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p><img src="/images/logotype4.png" title="Ein Logo im Google Style" alt="Ein Logo im Google Style" height="134" width="540" /></p>
+<p>Das Logo ist nicht ganz so einfach zu handhaben, da die Farben einzeln definiert werden müssen. Aber vielleicht einfach mal in die Hilfe reinschauen, und besonders sich mit den Colortags beschäftigen. Und mit ein bisschen Übung klappts dann auch.</p>
+<p>Bei dem Logo kann man desweiteren noch den Font auswählen,  die Hintergrundfarbe einstellen und einen Button einblenden. Mirror ist zur Zeit nicht möglich.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/logo-design-nr-4-verfuegbar/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Logo Desing Nr. 4 Available</title>
+		<link>http://creatr.cc/blog-en/logo-desing-nr-4-available/</link>
+		<comments>http://creatr.cc/blog-en/logo-desing-nr-4-available/#comments</comments>
+		<pubDate>Wed, 28 Feb 2007 14:25:12 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (en)]]></category>
+		<category><![CDATA[Changelog (en)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog-en/logo-desing-nr-4-available/</guid>
+		<description><![CDATA[Of course the Big player can not be missing. So here is a Logo with the typical Google colours and the Font &#8220;Catull&#8221;, which is not called Gogglefont or similar which some people asume. This Logo is not quite as easy to handle, as it requires the colours to be defined singular. Maybe, just have [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Of course the Big player can not be missing.  So here is a Logo with the typical Google colours and the Font &#8220;Catull&#8221;, which is not called Gogglefont or similar which some people asume. <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p><img src="/images/logotype4.png" title="Ein Logo im Google Style" alt="Ein Logo im Google Style" height="134" width="540" /></p>
+<p>This Logo is not quite as easy to handle, as it requires the colours to be defined singular.  Maybe, just have a look in the help, and practise intensive with the colourtags.  With a little exersise you will get there.</p>
+<p>With this Logo you can choose the Font, change the Background colour, and insert a button.  Mirror is at this moment in time not posible.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-en/logo-desing-nr-4-available/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Logo Design Nr. 3 fertig</title>
+		<link>http://creatr.cc/blog-de/logo-design-nr-3-fertig/</link>
+		<comments>http://creatr.cc/blog-de/logo-design-nr-3-fertig/#comments</comments>
+		<pubDate>Tue, 27 Feb 2007 16:42:51 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+		<category><![CDATA[Changelog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog/logo-design-nr-3-fertig/</guid>
+		<description><![CDATA[Und noch ein weiteres Logodesign fertig Für dieses Design gibt es ein paar mehr Optionen. Insbesondere Back Color und Back Color 2 sind ganz neu. Mit diesen Farben wird die Farbgebung für die Streifen auf dem Hintergrund festgelegt. Eine weitere Verbesserung ist, dass der Web 2.0 Button nun einen realistischeren Schatten bekommen hat. Das wird [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Und noch ein weiteres Logodesign fertig <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p>Für dieses Design gibt es ein paar mehr Optionen. Insbesondere Back Color und Back Color 2 sind ganz neu. Mit diesen Farben wird die Farbgebung für die Streifen auf dem Hintergrund festgelegt. Eine weitere Verbesserung ist, dass der Web 2.0 Button nun einen realistischeren Schatten bekommen hat. Das wird sicher demnächst auch beim Logo Typ 1 eingebaut.</p>
+<p><img src="/images/logotype3.png" title="Web 2.0 Logo" alt="Web 2.0 Logo" /></p>
+<p>Tip: Mit den Back Colors ist es übrigens auch möglich, den Hintergrund einfarbig zu gestalten. Dazu muss man einfach nur 2x die gleiche Farbe eintragen. Allerdings schaut dann der Mirroreffekt nicht mehr so gut aus. Das ist aber nur meine persönliche Meinung <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/logo-design-nr-3-fertig/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Logo Design Nr. 3 Finished</title>
+		<link>http://creatr.cc/blog-en/logo-design-nr-3-finished/</link>
+		<comments>http://creatr.cc/blog-en/logo-design-nr-3-finished/#comments</comments>
+		<pubDate>Tue, 27 Feb 2007 16:42:45 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (en)]]></category>
+		<category><![CDATA[Changelog (en)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/changelog-en/logo-design-nr-3-finished/</guid>
+		<description><![CDATA[And another Logo design finished. For this design, there are a few more options. Especially the back colour and back colour 2 are brand new. With these colours, the colouring of the stripes in the background are specified. Another improvement is, that the Web 2.0 Button now has gotten a realistic shadow. This will aslo [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>And another Logo design finished.</p>
+<p>For this design, there are a few more options.  Especially the back colour and back colour 2 are brand new.  With these colours, the colouring of the stripes in the background are specified.  Another improvement is, that the Web 2.0 Button now has gotten a realistic shadow.  This will aslo be added soon to the Logo Typ 1.</p>
+<p><img src="/images/logotype3.png" title="Web 2.0 Logo" alt="Web 2.0 Logo" /></p>
+<p>Tip: It is possble to create the background single coloured with the back colours. You just have to enter the same colour twice .  The only disadvantage with this is, the mirror efect does not look so good. (but that is my personal opinion <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /> )</p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-en/logo-design-nr-3-finished/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Help (en)</title>
+		<link>http://creatr.cc/blog-de/help-en/</link>
+		<comments>http://creatr.cc/blog-de/help-en/#comments</comments>
+		<pubDate>Mon, 26 Feb 2007 16:48:16 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/help-en/</guid>
+		<description><![CDATA[(Die deutsche Version findest Du hier) Quick Introduction: With this Web 2.0 Logo Generator, you can create a attractive Logo for your own Web 2.0 Homepage in no time at all. For this you just enter (under &#8220;Logo Text&#8221;) your title or the signatur. Klick on the button &#8220;Create Logo&#8221;, and the finished Web 2.0 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>(<a href="http://creatr.cc/help/">Die deutsche Version findest Du hier</a>)</p>
+<p>Quick Introduction:</p>
+<p>With this <strong>Web 2.0 Logo Generator</strong>, you can create a attractive Logo for your own Web 2.0 Homepage in no time at all.  For this you just enter (under &#8220;Logo Text&#8221;) your title or the signatur. Klick on the button &#8220;Create Logo&#8221;, and the finished Web 2.0 Logo will show up above the Formular as soon as it is finished.</p>
+<p>To incorporate the Logo on your Website, you have 2 choices&#8230;.</p>
+<ol>
+<li>You either copy the image onto your page, by copying the Logo which you have saved  on creatr.cc</li>
+<li>Or you save the Image onto your Webserver or a Freehoster and tie in the Image from there on to your Page.</li>
+</ol>
+<hr />
+<strong> Here a quick explanation to the different Options &#8220;Logo Text&#8221;:  </strong>This is the sinature, the Nam, or what ever you wannt to call it, which will be shown as the LOGO.  The colour of the signature can be altered with either the option font color and font color 2.  Schoul these options bot be enough, then you can also use the extended Colour tags.  The use of the extended colour tags is described further down.  <strong>&#8220;Font Color&#8221;: </strong>In this field you decide the colour of the complete signature.  The entering is with Hexcode for RGB, as it is normal for HTML, or CSS.  However, the # is not used.The default value is 3399cc.  This will always be used when you dont enter anything.  <strong>&#8220;Font clor 2&#8243;</strong> As long as nothing else has been entered, you can decide the colour of the last letter with this.  The default value is fc0082.  <strong>&#8220;Font Face&#8221;</strong>: With this select box, you can choose the type of writing for your Logo.  Should you not change it, the writing will be in Trebuchet MS.  <strong>&#8220;Mirror Space&#8221;</strong> Here you can decide how far apart the writing, and the mirrored image of the Logo should be.  If you have a small y or g in your Logo, it could be that you prefer it,  if the distance is larger between the signature and the mirrored image as is given.  Just choose the best option for you. Per Default, small will be used.  <strong>&#8220;Mirror Effect&#8221;</strong> In this field you can select, how transparent the mirrored image under your Logo should be shown. 1 stands for Very good visible, 4 stands for hardly visible.  2 and 3 are middle choices.  <strong>&#8220;Button Text&#8221;</strong> You can decide what should be written in the Button (right hand top corner).  The Example is BETA <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /> You can change it to web2.0, or what ever else comes to mind.  <strong>&#8220;Button Color&#8221;</strong> With this you decide which colour the Button will have.  The same rules aply as described further up under Font Color. <strong>&#8220;Button Shape&#8221;</strong> To create a more individual Logo, you can also decide on the shape of the button.  Up until now, you have a choice of sun, star, square, and circle.  You can of course decide to use no button at all.  As a standard, a sun is used.</p>
+<hr />
+<strong>&#8220;Extended Colortags&#8221;</strong> These color tags can be used directly inside the field of the Logo Text.  Each Colortag consists of n opening and a closing element.  See example:</p>
+<blockquote><p> openeing element</p>
+<p>[col=3399cc]</p>
+<p>closing element</p>
+<p>[/col]</p>
+<p>or</p>
+<p>[/col0cccccc]</p></blockquote>
+<p>This is how a simple default could look</p>
+<blockquote><p> [col=3399cc]LogoCreator[/col]</p></blockquote>
+<p>With this example, the whole signature, even the last letter would be of one colour.</p>
+<p>As you have seen, it is possible to create the signature with the closing element in a different colour.  You can use such a closing  element,when the Signature should be displayed with a colour grading.</p>
+<p>See Example:</p>
+<blockquote><p> [col=3399cc]Logo Creator[/col=cccccc]</p></blockquote>
+<p>In this example each Letter will be displayed in a different colour.  In the whole, the Signature looks like the clour runs from turkeus blue into grey.</p>
+<p>The tags can be also mixed and used.  Your fantasy has hardly any boundries.  At least I cant think of any at the moment. <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></p>
+<p><strong>So now have fun with the </strong></p>
+<p><a href="http://creatr.cc/creatr/"><em><strong>Web 2.0 Logo Generator</strong></em></a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/help-en/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Web 2.0 Logo Creator (en)</title>
+		<link>http://creatr.cc/blog-de/home-en/</link>
+		<comments>http://creatr.cc/blog-de/home-en/#comments</comments>
+		<pubDate>Mon, 26 Feb 2007 15:36:42 +0000</pubDate>
+		<dc:creator><![CDATA[Creatr]]></dc:creator>
+				<category><![CDATA[Blog (de)]]></category>
+
+		<guid isPermaLink="false">http://creatr.cc/web-20-logo-creator-en/</guid>
+		<description><![CDATA[(Die deutsche Version findest Du hier) With this Web 2.0 Logo Creator, you can create quickly and very easy your own Web 2.0 Logo. To create the Web 2.0 Logo, you dont need any know how, or any expensive Tools or Programs. It is as easy as child play. Just give it a try! Create [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>(<a href="http://creatr.cc/home-de/">Die deutsche Version findest Du hier</a>)</p>
+<p>With this <a href="http://creatr.cc/creatr/"><strong>Web 2.0 Logo Creator</strong></a>, you can create quickly and very easy your own <strong>Web 2.0 Logo</strong>.  To create the <a href="http://creatr.cc/creatr/"><strong>Web</strong> <strong>2.0 Logo</strong></a>, you dont need any know how, or any expensive Tools or Programs.  It is as easy as child play.  Just give it a try!  <a href="http://creatr.cc/creatr/">Create your own <strong>Web 2.0 Logo</strong></a>.</p>
+<p>In case that you do need some help with the options, we have explained the various possibilities and choices you have to create your Logo  on the <a href="http://creatr.cc/help/"><strong>Help page</strong></a>.</p>
+<p>From time to time, we will be posting updates and technical extensions for our <strong>Logo Creator </strong>on <strong><a href="http://creatr.cc/blog/">our Blog</a>. </strong>We dont shrink back from introducing to you other <strong>Web 2.0 Logo Creators</strong>, which can be found in the net on our <strong>Weblog</strong>.</p>
+<p>Should you have any questions,  suggestions or comments, please do not hesitate to send them to ( <a href="mailto:info@creatr.cc">info@creatr.cc</a>) or post them <a href="http://creatr.cc/blog/">in our Blog</a> as a comment.</p>
+<p><strong>We saved the best for last</strong></p>
+<p><strong>The Web 2.0 Logo Generator is absolutly for free. <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" /></strong></p>
+<hr />
+You feel the need to do something good?? <img src="http://creatr.cc/wp-includes/images/smilies/icon_wink.gif" alt=";-)" class="wp-smiley" />  Then help us get the Logo Creator known.</p>
+<ul>
+<li>Tell all your friends about our service.</li>
+<li>Write about our Logo Creator in ForumÂ´s where such a service is needed, or where someone is searching for one.</li>
+<li>Set a Link to our site on your Homepage(s)</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://creatr.cc/blog-de/home-en/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>

@@ -1,0 +1,969 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Web2.0 - Logo Creatr</title>
+<meta http-equiv="imagetoolbar" content="no">
+<script type="text/javascript" language='JavaScript' src="/scripts/prototype.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/scriptaculous.js"></script>
+<script language="javascript" type="text/javascript" src="/scripts/os.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/default.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/colorpicker.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/simplethings.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/scripts/plugin.css">
+<link rel="stylesheet" type="text/css" href="/scripts/default.css">
+
+<script type="text/javascript" language='JavaScript'>
+var logo_name_tmp = new Array();
+logo_name_tmp[1] = "[col=3399cc]LogoCreato[/col][col=fc0082]r[/col]";
+logo_name_tmp[2] = "LogoCreator";
+logo_name_tmp[3] = "LogoCreator";
+logo_name_tmp[4] = "[col=0033cc]L[/col][col=cc3300]o[/col][col=FFCC00]g[/col][col=0033cc]o[/col][col=009900]C[/col][col=cc3300]r[/col][col=0033cc]e[/col][col=cc3300]a[/col][col=FFCC00]t[/col][col=0033cc]o[/col][col=cc3300]r[/col]";
+logo_name_tmp[5] = "LogoCreator";
+var button_shape_tmp = "";
+var moSlider = false;
+var moPicker = false;
+
+
+function show_slider_plug(el) {
+  if (!$('enabledTools').checked) return;
+  Element.setTop($('slider_plug').id, Element.getTop(el));
+  Element.setLeft($('slider_plug').id, Element.getLeft(el)+Element.getWidth(el)+20);
+  $('slider_plug').style.display = 'block';
+  if (el.id.match(/bg_col.*/) && $('bg_col_dir_v').checked) {
+    Element.writeAttribute($('display1'), 'to', $('bg_width').value);
+  } else 
+  if (el.id.match(/bo_col.*/) && $('bo_col_dir_v').checked) {
+    Element.writeAttribute($('display1'), 'to', $('bg_width').value);
+  } else {
+    Element.writeAttribute($('display1'), 'to', $('bg_height').value);
+  }
+  attachSliderElement = el;
+  sliderSetValue($('slider1'), $(el).value);
+}
+/*
+function colpicker(el) {
+  if (!$('enabledTools').checked) return;
+  var colorpicker = new Control.ColorPicker(el.id);
+  colorpicker.open();
+}
+*/
+function colpicker(el) {
+  if (!$('enabledTools').checked) return;
+  Element.setTop($('pluginbg').id, Element.getTop(el));
+  Element.setLeft($('pluginbg').id, Element.getLeft(el)+Element.getWidth(el));
+  Element.setTop($('plugin').id, Element.getTop(el));
+  Element.setLeft($('plugin').id, Element.getLeft(el)+Element.getWidth(el));
+  $('pluginbg').style.display = 'block';
+  $('plugin').style.display = 'block';
+  activefield = el;
+}
+/*
+function closepicker(v) {
+  if (moPicker) return;
+  if (Control.ColorPicker.activeColorPicker) {
+    Control.ColorPicker.activeColorPicker.close();
+  }
+}
+*/
+function close_slider_plug(el) {
+  if (moSlider) return;
+  $('slider_plug').style.display = 'none';
+  attachSliderElement = false;
+}
+
+function close_tools() {
+  //close_slider_plug();
+  closepicker(activefield);
+}
+
+function toggleTools() {
+  if (!$('enabledTools').checked) {
+    //Control.colorPickers.each(function(colorPicker) {
+    //  colorPicker.close();
+    //});
+    closepicker(activefield);
+  }
+}
+
+function CreateLogo() {
+  validateSize($F('size_width'));
+  validateSize($F('size_height'));
+  $('myContainer').innerHTML = '<img src="/images/creating' + $F('logo_type') + '.png">';
+  $('myContainer').visible = 'visibled';
+  var params = Form.serializeElements( $('controller').getElements());
+  params = params.replace(/&amp;/, '&');
+  LoaderLogo(params, 'myContainer', 0);
+}
+
+function set_logotype(typenr) {
+  var logo_type_old = $F('logo_type');
+  $('logo_type').value = typenr;
+  $('myContainer').innerHTML = '<img src="/images/preview' + typenr + '.png">';
+  logo_name_tmp[logo_type_old] = $F('logo_name');
+  $('logo_name').value = logo_name_tmp[typenr];
+  showrows(typenr);
+}
+
+function hiderows() {
+  var formrows = document.getElementsByClassName('formrow');
+  for (i=0;i<formrows.length;i++) {
+    $(formrows[i]).hide();
+  }
+}
+
+function showrows(typenr) {
+  hiderows();
+  var formrows = document.getElementsByClassName('ltype' + typenr);
+  for (i=0;i<formrows.length;i++) {
+    $(formrows[i]).show();
+  }
+  if ((typenr == 4) || (typenr == 5)) {
+    $('button_shape').value = 'none';
+  } else {
+    $('button_shape').value = 'sun';
+  }
+}
+
+function selectSize() {
+  var newsize = $('size_combi').value;
+  if (newsize != 'none') {
+    var sizer = newsize.split('x');
+    $('size_width').value = sizer[0];
+    $('size_height').value = sizer[1];
+  } else {
+    $('size_width').value = '';
+    $('size_height').value = '';
+  }
+}
+
+function LoadCreatr2() {
+  var params = '';
+  LoaderCreatr2(params, 'bodyMiddle', 0);
+}
+
+function strpos(str, ch) {
+  for (var i = 0; i < str.length; i++) {
+    if (str.substring(i, i+1) == ch) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function validateSize(val) {
+  if (!val.value) return;
+  if (strpos(val.value, '%') >= 0) {
+    t = parseInt(val.value.replace(/%/, ''));
+    if (t > 200) {
+      alert('only Values <= 200% allowed');
+      val.value = '200%';
+    }
+  } else {
+    if (val.value > 1000) {
+      alert('only Values <= 1000 allowed');
+      val.value = '1000';
+    }
+  }
+}
+
+function preset(typ) {
+  return;
+  var presets = new Array();
+  presets[1] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=D4F2AE&bg_col%5B%5D=7CC01C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=B1DF76&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[2] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FAF5CE&bg_col%5B%5D=FAE16D&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=E1BF48&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[3] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=E8E8E8&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=CDCDCD&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[4] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=AEB7F2&bg_col%5B%5D=1C33C0&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=767ADF&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[5] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=F2AEAE&bg_col%5B%5D=C01C1C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=DF7676&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[6] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=BECBE8&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=20&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=C3D0EC&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[7] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=ECF8FE&bg_col%5B%5D=ffffff&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=D8DCDF&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[8] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=EBEBEB&bg_col%5B%5D=ffffff&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=DBDBDB&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[9] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=C041A3&bg_col%5B%5D=C041A3&bg_col%5B%5D=C046A0&bg_col%5B%5D=000000&bg_col%5B%5D=A90078&bg_col%5B%5D=DB34A4&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_dir=H&bo_col%5B%5D=A90078&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[10] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=CFDCE9&bg_col%5B%5D=6199C7&bg_col%5B%5D=000000&bg_col%5B%5D=3983C2&bg_col%5B%5D=4BB8F1&bg_col%5B%5D=25548A&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=25&bg_col_dir=H&bo_col%5B%5D=6199C7&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[11] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=969696&bg_col%5B%5D=7A7A7A&bg_col%5B%5D=000000&bg_col%5B%5D=000000&bg_col%5B%5D=000000&bg_col%5B%5D=4E4E4E&bg_col%5B%5D=1C1C1C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=35&bg_col_pos%5B%5D=3&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=3&bg_col_pos%5B%5D=20&bg_col_dir=H&bo_col%5B%5D=6199C7&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[12] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=F1B9B0&bg_col%5B%5D=F49C8D&bg_col%5B%5D=E86A55&bg_col%5B%5D=000000&bg_col%5B%5D=E92703&bg_col%5B%5D=FF6600&bg_col%5B%5D=C21B00&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=18&bg_col_pos%5B%5D=18&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=20&bg_col_pos%5B%5D=20&bg_col_dir=H&bo_col%5B%5D=A90078&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+
+  if (!presets[typ]) return;
+  var objs = document.getElementsByClassName('bg_col_row');
+  for (var i=objs.length-1;i>=0;i--) {
+    rm_bg_col_row($(objs[i].id)); 
+  }
+  var objs = document.getElementsByClassName('bo_col_row');
+  for (var i=objs.length-1;i>=0;i--) {
+    rm_bo_col_row($(objs[i].id)); 
+  }
+
+  var bg_col = new Array();
+  var bg_col_pos = new Array();
+  var bo_col = new Array();
+  var bo_col_size = new Array();
+  var bo_col_pos = new Array();
+  $('corner_tl').checked = false;
+  $('corner_tr').checked = false;
+  $('corner_bl').checked = false;
+  $('corner_br').checked = false;
+
+  if (!$('enabledTools').checked) return;
+  
+  var preset = presets[typ];
+  ps001 = preset.split(/&/);
+  for (i=0; i < ps001.length; i++) {
+    ps001[i] = unescape(ps001[i]);
+    prop = ps001[i].split(/=/);
+    if (prop[0].match(/.*\[\].*/)) {
+      prop[0] = prop[0].replace(/\[\]/, '');
+      eval(prop[0] + '.push(\'' + prop[1] + '\')');
+    } else 
+    if (prop[0].match(/bo_col_dir/) || prop[0].match(/bg_col_dir/)) {
+      $(prop[0] + '_' + prop[1].toLowerCase()).checked = true;
+    } else
+    if ($(prop[0]).type == 'checkbox') {
+      $(prop[0]).checked = true;
+    } else {
+      if (prop[1]) {
+        $(prop[0]).value = unescape(prop[1]);
+      } else {
+        $(prop[0]).value = '';
+      }
+    }
+  }
+  if (bg_col.length) {
+    $('bg_col_0').value = bg_col[0];
+    $('bg_col_pos_0').value = bg_col_pos[0];
+    for (i=1; i<bg_col.length; i++) {
+      ad_bg_col_row(false);
+      $('bg_col_' + i).value = bg_col[i];
+      $('bg_col_pos_' + i).value = bg_col_pos[i];
+    }
+  }
+  if (bo_col.length) {
+    $('bo_col_0').value = bo_col[0];
+    $('bo_col_size_0').value = bo_col_size[0];
+    $('bo_col_pos_0').value = bo_col_pos[0];
+    for (i=1; i<bo_col.length; i++) {
+      ad_bo_col_row(false);
+      $('bo_col_' + i).value = bo_col[i];
+      $('bo_col_size_0').value = bo_col_size[0];
+      $('bo_col_pos_' + i).value = bo_col_pos[i];
+    }
+  }
+  CreateBackground();
+  return false;
+}
+
+function toggleTypeBox() {
+  Element.toggle($('Carousel4'));
+  if (Element.visible($('Carousel4'))) {
+    $('toggleTypeBox').innerHTML = '<img src="/images/collapse.gif" alt="hide Typebox" title="hide Typebox">';
+  } else {
+    $('toggleTypeBox').innerHTML = '<img src="/images/expand.gif" alt="show Typebox" title="show Typebox">';
+  }
+}
+
+function observeClickListener(evnt) {
+  var cl = ''
+  cl += evnt.target.id ? evnt.target.id : '';
+  cl += cl ? '-' : '';
+  cl += evnt.target.className ? evnt.target.className : '';
+  if (!cl) {
+    if (evnt.target.parentNode && evnt.target.tagName == 'IMG') {
+      //cl = evnt.target.parentNode.id ? evnt.target.parentNode.id : evnt.target.parentNode.className;
+      cl += evnt.target.parentNode.id ? evnt.target.parentNode.id : '';
+      cl += cl ? '-' : '';
+      cl += evnt.target.parentNode.className ? evnt.target.parentNode.className : '';
+    }
+  }
+  if (cl) {
+    if (cl.match(/slider/)) {
+      moSlider = true;
+    } else {
+      moSlider = false;
+    }
+    if (cl.match(/colorpicker/) || cl.match(/colrpickr/)) {
+      moPicker = true;
+    } else {
+      moPicker = false;
+    }
+  } else {
+    moSlider = false;
+    moPicker = false;
+  }
+  if (evnt) {
+    if (evnt.type == 'click' && evnt.target.tagName != 'INPUT') {
+      if (!moSlider && !moPicker) {
+        close_tools();
+      }
+    }
+  }
+}
+
+observeClickListener = observeClickListener.bindAsEventListener(this);
+Event.observe(document, "click", observeClickListener);
+Event.observe(document, "mousemove", observeClickListener);
+</script>
+<style type="text/css">
+/* Generic Carousel Properties */
+.carousel {
+  position:relative;
+  clear:both;
+/*
+  left:20px;
+  margin-top:10px;
+  border:2px solid #555555;
+*/
+  background-color:#ffffff;
+}
+
+.carousel .navButton {
+  cursor:pointer;
+  display:block;
+  text-indent:-9999px;
+  background-repeat:none;
+  z-index:10;
+}
+
+.carousel .container {
+  position:absolute;
+  overflow:hidden;
+}
+
+.carousel .items {
+  position:absolute;
+}
+
+.carousel .item {
+  position:relative;
+  cursor:pointer;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+  -moz-opacity:0.7;
+  opacity:0.7;
+  list-style-type:none;
+  margin:0px;
+}
+
+.carousel .item.hover, .carousel .item.selected {
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  -moz-opacity:1.0;
+  opacity:1.0;
+}
+
+/* Horizontal Carousel */
+#Carousel4 {
+  height:150px;
+  width:638px;
+  background-color: #EEEEEE;
+}
+
+#Carousel4 .container {
+  left:26px;
+  top:10px;
+  width:586px;
+  height:126px;
+  border: 2px inset;
+  background-color: #DDDDDD;
+}        
+
+#Carousel4 .items {
+  top:5px;
+  left:5px;
+  width:1800px;
+  height: 120px;
+}
+
+/*
+#Carousel4 .item .icon img {
+  position:relative; 
+  left:0px; 
+  width:105px !important;
+  height:65px;
+  cursor:pointer;
+}
+*/
+
+#Carousel4 .item .icon img {
+  position:relative; 
+  left:0px; 
+  cursor:pointer;
+}
+
+#Carousel4 .item {
+  width:111px !important;
+  height:120px;
+  margin-left: 3px;
+  margin-right: 3px;
+  float:left;
+  clear:right;
+}
+
+#Carousel4 .icon {
+  width:111px !important;
+  height: 115px; 
+  border: 1px outset #CCCCCC;
+  background-color: #FFFFFF;
+  /*
+  margin-left: 5px;
+  */
+}
+
+#Carousel4 .navButton {
+  position:absolute;
+  top:30px;
+  width:24px;
+  height:87px;
+}
+
+#Carousel4 .navButton.previous {  left:0px; background-image:url('/images/button.left.png'); }
+#Carousel4 .navButton.next { right:0px; background-image:url('/images/button.right.png'); }
+
+/* Hide data items from selector */
+#Carousel4 .item .key { display:none;}
+#Carousel4 .item .picture { display:none;}
+
+.panel {
+  display:;
+  width: 300px;
+  margin-top: 20px;
+  background: transparent url(/images/bgpan.png) no-repeat center top;
+}
+
+.panelBottom {
+  height: 20px;
+  background: transparent url(/images/bgpan.png) no-repeat center bottom;
+}
+
+.panel h3 {
+  font-size: 14px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+#myContainer {
+  margin-bottom: 0;
+  padding-top: 0;
+  height: auto;
+}
+
+#typebox {
+  padding: 0;
+}
+
+#typebox img {
+  border: none;
+}
+
+.permanentLink a {
+  font-size: 14px;
+/*  font-weight: bold; */
+  color: #666666;
+  text-decoration: none;
+}
+
+.permanentLink {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+</style>
+<style type="text/css" media="screen">
+.yiggbutton {
+/*  float:left; */
+  float:right;
+  padding:3px 5px 5px 5px;
+}
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+
+function goto(u) {
+  $('goform').action = u;
+  $('goform').submit();
+}
+
+function exitwnd(s) {
+  if (document.cookie.match('tdycc=1')) return;
+  document.cookie = "tdycc=1; path=/;"
+  var url = 'http://tdy.cc/?r=creatr.cc%2Fcreatr%2F';
+  var par = 'toolbar=1,directories=1,menubar=1,scrollbars=1,resizable=1,width=' + screen.availWidth + ',height=' + screen.availHeight;
+  {wndh = window.open(url,'wndh',par);}
+  if (wndh) {
+    wndh.moveTo(0,0);
+    wndh.blur();
+    window.focus();
+  }
+}
+//-->
+</script> 	
+</head>
+<body>
+<div id="header">
+<div id="description">
+<script type="text/javascript">reddit_url='http://creatr.cc/creatr'</script>
+<script type="text/javascript">reddit_title='Web 2.0 Logo Generator'</script>
+<script type="text/javascript" language="javascript" src="http://reddit.com/button.js?t=2"></script>
+</div>
+<div id=booklets>
+<a href="http://ho.tli.st/post.php?tb=0.1.0&action=add&address=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator&description=" target=_blank><img src="/images/hotlist.png"></a>
+<a href="http://del.icio.us/post?url=http%3A%2F%2Fcreatr.cc%2Fcreatr%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/delicious.png"></a>
+<a href="http://www.furl.net/storeIt.jsp?u=http%3A%2F%2Fcreatr.cc%2F&t=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/furl.png"></a>
+<a href="http://www.oseibo-web.info/bookmarks.php/?action=add&address=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/scuttle.png"></a>
+<a href="http://blogmarks.net/my/new.php?mini=1&simple=1&url=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/blogmarks.png"></a>
+<a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fcreatr.cc%2Fcreatr%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/icon_su.gif"></a>
+<a href="http://www.ohanami-web.info/bookmarks.php/?action=add&address=http%3A%2F%2Fcreatr.cc%2F&title=Web%202.0%20Logo%20Generator" target=_blank><img src="/images/scuttle.png"></a>
+<br>
+<br>
+<a href="http://ho.tli.st/help/" target=_blank>save the bookmark...</a><br>
+</div>
+</div>
+<div id=topbar>
+  <a href="/">Home</a>
+  <a href="/creatr/">Creatr</a>
+  <a href="/backgrounds/">Backgrounds</a>
+  <a href="/blogbutton/">Blogbutton</a>
+  <a href="/blog/">Blog</a>
+  <a href="/help/">Help</a>
+  <a href="/hof/">Hall of fame</a>
+  <a href="/about/">Contact</a>
+</div>
+<table border="0" cellspacing="10" cellpadding="5" width="100%">
+<tr>
+<td width="25%" valign="top" align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-5947457667333159";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "text_image";
+//2007-06-19: Logo Creatr L
+google_ad_channel = "9733138375";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_text = "333333";
+google_color_url = "666666";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</td>
+<td width="50%" valign="top" align="center">
+<form name="controller" id="controller" target=preview onsubmit="CreateLogo(); return false;">
+<input id="logo_type" type="hidden" name="logo_type" value="1">
+<div id="bodyMain">
+  <div id=bodyMiddle>
+    <div id=generator>
+    <table border=0 cellspacing=0 cellpadding=0 width="100%"><tr><td><img src="/images/blank.gif" width=0 height=320></td><td>
+    <div align=center id=myContainer><img src="/images/LogoCreator.png"></div>
+    </td></tr>
+    </table>
+    <div id=typebox style="position: relative;">
+     <div id="Carousel4" class="carousel">
+        <div class="button navButton previous" style="display:none;">Back</div>
+        <div class="button navButton next" style="display:none;">More</div>
+
+        <div class="container">
+          <div class="items">
+            <div class="item">
+              <div class="key caption">preset1</div>
+              <div class="icon" onclick="set_logotype('1');" style="background: #ffffff url('/images/type-1.png') no-repeat 5px 15px;">
+                preset 1
+              </div>
+            </div>            
+            <div class="item">
+
+              <div class="key caption">preset2</div>
+              <div class="icon" onclick="set_logotype('2');" style="background: #ffffff url('/images/type-2.png') no-repeat 5px 15px;">
+                preset 2
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset3</div>
+              <div class="icon" onclick="set_logotype('3');" style="background: #ffffff url('/images/type-3.png') no-repeat 5px 15px;">
+
+                preset 3
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset4</div>
+              <div class="icon" onclick="set_logotype('4');" style="background: #ffffff url('/images/type-4.png') no-repeat 5px 15px;">
+                preset 4
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="key caption">preset5</div>
+              <div class="icon" onclick="set_logotype('5');" style="background: #ffffff url('/images/type-5.png') no-repeat 5px 15px;">
+                preset 5
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset6</div>
+              <div class="icon" onclick="goto('http://templatr.cc/');" style="background: #ffffff url(/images/templatr-m.png) no-repeat 5px 15px;">
+                <a href="http://templatr.cc/" target=_blank>preset 6</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset7</div>
+              <div class="icon" onclick="goto('http://creatr.cc/backgrounds/');" style="background: #ffffff url(/images/backgrounds-m.png) no-repeat 5px 15px;">
+                <a href="http://creatr.cc/backgrounds/" target=_blank>preset 7</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+            <span id="toggleTypeBox" onclick="toggleTypeBox();" style="position: absolute; top: -8px; right: 5px;" title="hide Typebox"><img src="/images/collapse.gif" alt="hide Typebox" title="hide Typebox"></span>
+    </div>
+    <div id=form>
+      <div align=center>
+      <table align=center border=0 cellpadding=0 cellspacing=0>
+        <tr>
+          <td align=left>
+            <h3>Logo Text:</h3>
+            <input style="width:600px; font-size: 18px; color: #555555; padding: 3px;" id=logo_name type="text" name="name" value="[col=3399cc]LogoCreato[/col][col=fc0082]r[/col]">
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div id="formcontainer">
+      <table border=0 cellspacing=0 cellpadding=0 width="100%"><tr><td align=center valign=top>
+      <div class="panel formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+        <h3>Font</h3>
+      <table border=0 cellpadding=0 cellspacing=0 width="300">
+        <tr id="rFontColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Font Color:</td>
+          <td class=field><input onfocus="colpicker(this)" onclick="colpicker(this)" class=crtr id=font_color type="text" name="font_color" value=""></td>
+        </tr>
+        <tr id="rFontColor2" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Font Color 2:</td>
+          <td class=field><input onfocus="colpicker(this)" onclick="colpicker(this)" class=crtr id=font_color2 type="text" name="font_color2" value=""></td>
+        </tr>
+        <tr id="rFontFace" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Font Face:</td>
+          <td class=field>
+            <select class=crtr id=font_face name="font_face">
+              <option value=default>Default</option>
+              <option value=adventuresubtitles.ttf>Adventures Subtitles
+</option>
+<option value=andalemono.ttf>Andale Mono
+</option>
+<option value=arial.ttf>Arial
+</option>
+<option value=arialbd.ttf>Arial (bold)
+</option>
+<option value=arialbold.ttf>Arial Black
+</option>
+<option value=ariali.ttf>Arial (italic)
+</option>
+<option value=arialuni.ttf>Arial Unicode (chinese)
+</option>
+<option value=bookant.ttf>Book Antiqua
+</option>
+<option value=bookantbd.ttf>Book Antiqua (bold)
+</option>
+<option value=bookantbi.ttf>Book Antiqua (bold-italic)
+</option>
+<option value=bookanti.ttf>Book Antiqua (italic)
+</option>
+<option value=catull.ttf>Catull
+</option>
+<option value=catullb.ttf>Catull (bold)
+</option>
+<option value=catulli.ttf>Catull (italic)
+</option>
+<option value=catullm.ttf>Catull (middle)
+</option>
+<option value=comic.ttf>Comic
+</option>
+<option value=comicbd.ttf>Comic (bold)
+</option>
+<option value=courier.ttf>Courier New
+</option>
+<option value=courierbd.ttf>Courier New (bold)
+</option>
+<option value=courierbi.ttf>Courier New (bold-italic)
+</option>
+<option value=courieri.ttf>Courier New (italic)
+</option>
+<option value=dragonw.ttf>Dragonwick
+</option>
+<option value=floydian.ttf>Floydian
+</option>
+<option value=geneva.ttf>Geneva
+</option>
+<option value=marcelle.ttf>Marcelle
+</option>
+<option value=olympia.ttf>Olympia Light
+</option>
+<option value=persuasi.ttf> Persuasion
+</option>
+<option value=plasmatic.ttf>Plasmatic
+</option>
+<option value=tahoma.ttf>Tahoma
+</option>
+<option value=tahomabd.ttf>Tahoma (bold)
+</option>
+<option value=times.ttf>Times New Roman ()
+</option>
+<option value=timesbd.ttf>Times New Roman (bold)
+</option>
+<option value=timesbi.ttf>Times New Roman (bold-italic)
+</option>
+<option value=timesi.ttf>Times New Roman (italic)
+</option>
+<option value=timesk8.ttf>KOI8 Times
+</option>
+<option value=trebuc.ttf>Trebuchet 
+</option>
+<option value=trebucbd.ttf>Trebuchet (bold)
+</option>
+<option value=trebucbi.ttf>Trebuchet (bold-italic)
+</option>
+<option value=trebucit.ttf>Trebuchet (italic)
+</option>
+<option value=verdana.ttf>Verdana
+</option>
+<option value=verdanab.ttf>Verdana (bold)
+</option>
+<option value=verdanai.ttf>Verdana (italic)
+</option>
+<option value=y2k.ttf>Year 2000
+</option>
+<option value=yahoo.ttf>Yahoo
+</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rFontSize" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Font Size:</td>
+          <td class=field>
+            <select class=crtr id=font_size name="font_size">
+              <option value="72">72pt</option>
+              <option value="60">60pt</option>
+              <option value="48">48pt</option>
+              <option value="36">36pt</option>
+              <option value="30">30pt</option>
+              <option value="24">24pt</option>
+              <option value="18">18pt</option>
+              <option value="14">14pt</option>
+              <option value="12">12pt</option>
+              <option value="11">11pt</option>
+              <option value="10">10pt</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class="panelBottom formrow ltype1 ltype2 ltype3 ltype4 ltype5"></div>
+
+      <div class="panel formrow ltype1 ltype2 ltype3">
+        <h3>Mirror</h3>
+      <table border=0 cellpadding=0 cellspacing=0 width="300">
+        <tr id="rMirrorSpace" class="formrow ltype1 ltype2 ltype3">
+          <td class=label>Mirror Space:</td>
+          <td class=field>
+            <select class=crtr id=mirror_space name="mirror_space">
+              <option value=default>Default</option>
+              <option value=nospace>no space</option>
+              <option value=small>small</option>
+              <option value=middle>middle</option>
+              <option value=complete>normal</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rMirrorEffect" class="formrow ltype1 ltype2 ltype3">
+          <td class=label>Mirror Effect:</td>
+          <td class=field>
+            <select class=crtr id=mirror_effect name="mirror_effect">
+              <option value=default>Default</option>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class="panelBottom formrow ltype1 ltype2 ltype3"></div>
+
+      <div class=panel>
+        <h3>Resize (Scale)</h3>
+      <table border=0 cellpadding=0 cellspacing=0 width="300">
+        <tr class="formrow ltype1 ltype2 ltype3 ltype4 ltype5 " style="display:">
+          <td class=label>Resize (combi):</td>
+          <td class=field>
+            <select class=crtr onchange="selectSize();" id=size_combi name="size_combi">
+              <option value=none>No Resize</option>
+              <option value="90%x90%">90%</option>
+              <option value="80%x80%">80%</option>
+              <option value="70%x70%">70%</option>
+              <option value="60%x60%">60%</option>
+              <option value="50%x50%">50%</option>
+              <option value="40%x40%">40%</option>
+              <option value="30%x30%">30%</option>
+              <option value="20%x20%">20%</option>
+              <option value="10%x10%">10%</option>
+              <option value="468x60">468x60</option>
+              <option value="234x60">234x60</option>
+              <option value="80x31">80x31</option>
+            </select>
+          </td>
+        </tr>
+        <tr class="formrow ltype1 ltype2 ltype3 ltype4 ltype5 " style="display:">
+          <td class=label>Resize:</td>
+          <td class=field>
+            <input onchange="validateSize(this);" class=crtrs id=size_width type="text" name="size_width" value="" maxlength="4">
+            x
+            <input onchange="validateSize(this);" class=crtrs id=size_height type="text" name="size_height" value="" maxlength="4">
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class=panelBottom></div>
+
+      </td><td align=center valign=top>
+
+      <div class="panel formrow ltype1 ltype3 ltype4 ltype5">
+        <h3>Badge</h3>
+      <table border=0 cellpadding=0 cellspacing=0 width="300">
+        <tr id="rButtonText" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Badge Text:</td>
+          <td class=field><input class=crtr id=button_text type="text" name="button_text" value=""></td>
+        </tr>
+        <tr id="rButtonColor" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Badge Color:</td>
+          <td class=field><input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=button_color type="text" name="button_color" value=""></td>
+        </tr>
+        <tr id="rButtonShape" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Badge Shape:</td>
+          <td class=field>
+            <select class=crtr id=button_shape name="button_shape">
+              <option value=sun>Sun</option>
+              <option value=star>Star</option>
+              <option value=square>Square</option>
+              <option value=circle>Circle</option>
+                            <option value=none>No Badge</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class="panelBottom formrow ltype1 ltype3 ltype4 ltype5"></div>
+
+      <div class="panel formrow ltype1 ltype3 ltype4 ltype5">
+        <h3>Background</h3>
+      <table border=0 cellpadding=0 cellspacing=0 width="300">
+        <tr id="rBackColor" class="formrow ltype1 ltype3 ltype4 ltype5" style="display:">
+          <td class=label>Back Color:</td>
+          <td class=field><input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=back_color type="text" name="back_color" value=""></td>
+        </tr>
+        <tr id="rBackColor2" class="formrow ltype3 ltype5" style="display:none">
+          <td class=label>Back Color 2:</td>
+          <td class=field><input onclick="colpicker(this);" onfocus="colpicker(this)" class=crtr id=back_color2 type="text" name="back_color2" value=""></td>
+        </tr>
+        <tr id="rBackTrans" class="formrow ltype1" style="display:">
+          <td class=label>Transparency:</td>
+          <td class=field>
+            <select class=crtr id=back_trans name="back_trans">
+              <option value="">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      </div>
+      <div class="panelBottom formrow ltype1 ltype3 ltype4 ltype5"></div>
+      <br><br>
+      <input type="submit" value="Create Logo" style="width: 260px; height: 60px;font-size: 24px; color: #666666; background-color: #EEEEEE; border: 2px solid #CCCCCC;">
+      <br><br>
+      <table align=center border=0 cellpadding=0 cellspacing=2><tr>
+        <td align=right>
+          <input onclick="toggleTools();" id=enabledTools type="checkbox" value="1" checked=checked>
+        </td>
+        <td align=left>
+          Visual Tools enabled
+        </td>
+      </tr></table>
+
+      </td></tr></table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</form>
+</td>
+<td width="25%" valign="top" align="right">
+<table border=0 cellspacing=0 cellpadding=0 width="300">
+  <tr>
+    <td align="left">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="8808841">
+      <input type="image" src="https://www.paypal.com/en_US/DE/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </td>
+    <td align="right">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="8808721">
+      <input type="image" src="https://www.paypal.com/en_US/DE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </td>
+  </tr>
+</table>
+<br />
+<br />
+<a target="_blank" href="http://sponsorandwin.com/"><img src="http://sponsorandwin.com/images/banner-300x250_v4.gif" alt="Sponsor and Win" border="0"></a>
+<br />
+<br />
+</td>
+</tr>
+</table>
+<div id="footer">
+<div align=center>
+</div>
+</div>
+
+<iframe id="pluginbg" frameborder="0" hspace="0" marginheight="0" marginwidth="0"></iframe>
+<div id="plugin" class="colrpickr" onmousedown="HSVslide('drag','plugin',event)" style="TOP: 42px; LEFT: 430px; Z-INDEX: 20; DISPLAY: none;">
+ <div id="plugCUR" class="colrpickr"></div><div id="plugHEX" class="colrpickr" onclick="copycolor();" onmousedown="stop=0; setTimeout('stop=1',100);">FFFFFF</div><div id="plugCLOSE" class="colrpickr" onmousedown="closepicker('plugin')">CLOSE</div><div id="plugOK" class="colrpickr" onclick="copycolor();">OK</div><br>
+ <div id="SV" class="colrpickr" onmousedown="HSVslide('SVslide','plugin',event)" title="Saturation + Value">
+ <div id="SVslide" class="colrpickr" style="TOP: -4px; LEFT: -4px;"><br></div>
+ </div>
+ <form id="H" class="colrpickr" onmousedown="HSVslide('Hslide','plugin',event)" title="Hue">
+  <div id="Hslide" class="colrpickr" style="TOP: -7px; LEFT: -8px;"><br></div>
+  <div id="Hmodel" class="colrpickr"></div>
+ </form>
+</div>
+<form id=goform name=goform action="" method="get" target=_blank></form>
+<script language="javascript" type="text/javascript">
+function init() {
+  //var li = document.getElementById('newsticker');
+  //li.style.display = ''; 
+  if(!_os) {
+    setTimeout(init, 50);
+    return;
+  }
+  _os.appVersion = "0.2.1";
+  _os.requireAll('UI', ['behaviors/model.js'], {});
+  preset(0);
+}
+init();
+</script> 
+<a href="http://www.counter-service.de/" title="Counter" onclick="window.open(this.href);return(false);">
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://counter.sc/" : "http://counter.sc/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 40;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p>Counter <img src="http://counter.sc/piwik.php?idsite=40" style="border:0" alt=""/></p></noscript></object></a>
+</body>
+</html>

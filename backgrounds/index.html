@@ -1,0 +1,981 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Web 2.0 Background Generator</title>
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="Web 2.0 Online Background Generator, Easy to use! Real Web 2.0 Style with rounded Corner and Gradient Corlors.">
+<meta name="keywords" content="web 2.0, backgrounds, webdesign, rounded corner, gradient, metallic, glossy, effekt">
+<script type="text/javascript" language='JavaScript' src="scripts/prototype.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/scriptaculous.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/os.js"></script>
+<script type="text/javascript" language='JavaScript' src="scripts/default.js"></script>
+<script type="text/javascript" language='JavaScript' src="scripts/myslider.js"></script>
+<script type="text/javascript" language='JavaScript' src="scripts/colorpicker/yahoo.color.js"></script>
+<script type="text/javascript" language='JavaScript' src="scripts/colorpicker/colorPicker.js"></script>
+<script type="text/javascript" language='JavaScript' src="/scripts/simplethings.js"></script>
+<link rel="stylesheet" type="text/css" href="scripts/default.css" />
+<link rel="stylesheet" type="text/css" href="scripts/slider.css" />
+<link rel="stylesheet" type="text/css" href="scripts/colorpicker/colorPicker.css" />
+<script type="text/javascript" language='JavaScript'>
+var bg_col_rows = 0;
+var bo_col_rows = 0;
+var moSlider = false;
+var moPicker = false;
+
+function CreateBackground() {
+  timestamp = new Date();
+  $('myContainer').innerHTML = '<img src="/images/creating' + $F('bg_type') + '.png">';
+  $('myContainer').visible = 'visibled';
+  var params = Form.serializeElements( $('controller').getElements());
+  params = params.replace(/&amp;/, '&');
+  //_CreateBackground(params, 'myContainer', 0);
+  $('myContainer').innerHTML = '<img src="background.png?' + params + '&t=' + timestamp.getTime() + '">';
+  $('permaLink').href = "/backgrounds/?" + params;
+  $('saveasLink').href = "/backgrounds/background.png?" + params + "&saveit=true";
+}
+
+function colpicker(el) {
+  if (!$('enabledTools').checked) return;
+  var colorpicker = new Control.ColorPicker(el.id);
+  colorpicker.open();
+}
+
+function closepicker(v) {
+  if (moPicker) return;
+  if (Control.ColorPicker.activeColorPicker) {
+    Control.ColorPicker.activeColorPicker.close();
+  }
+}
+
+function toggleTools() {
+  if (!$('enabledTools').checked) {
+    Control.colorPickers.each(function(colorPicker) {
+      colorPicker.close();
+    });
+  }
+}
+
+function showvalues() {
+}
+
+function show_slider_plug(el) {
+  if (!$('enabledTools').checked) return;
+  Element.setTop($('slider_plug').id, Element.getTop(el));
+  Element.setLeft($('slider_plug').id, Element.getLeft(el)+Element.getWidth(el)+20);
+  $('slider_plug').style.display = 'block';
+  if (el.id.match(/bg_col.*/) && $('bg_col_dir_v').checked) {
+    Element.writeAttribute($('display1'), 'to', $('bg_width').value);
+  } else 
+  if (el.id.match(/bo_col.*/) && $('bo_col_dir_v').checked) {
+    Element.writeAttribute($('display1'), 'to', $('bg_width').value);
+  } else {
+    Element.writeAttribute($('display1'), 'to', $('bg_height').value);
+  }
+  attachSliderElement = el;
+  sliderSetValue($('slider1'), $(el).value);
+}
+
+function close_slider_plug(el) {
+  if (moSlider) return;
+  $('slider_plug').style.display = 'none';
+  attachSliderElement = false;
+}
+
+function close_tools() {
+  close_slider_plug();
+  closepicker();
+}
+
+function preset(typ) {
+  var presets = new Array();
+  presets[1] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=D4F2AE&bg_col%5B%5D=7CC01C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=B1DF76&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[2] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FAF5CE&bg_col%5B%5D=FAE16D&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=E1BF48&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[3] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=E8E8E8&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=CDCDCD&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[4] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=AEB7F2&bg_col%5B%5D=1C33C0&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=767ADF&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[5] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=F2AEAE&bg_col%5B%5D=C01C1C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=DF7676&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[6] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=FDFDFD&bg_col%5B%5D=BECBE8&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=20&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=C3D0EC&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[7] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=ECF8FE&bg_col%5B%5D=ffffff&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=D8DCDF&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[8] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=EBEBEB&bg_col%5B%5D=ffffff&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=80&bg_col_dir=H&bo_col%5B%5D=DBDBDB&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[9] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=C041A3&bg_col%5B%5D=C041A3&bg_col%5B%5D=C046A0&bg_col%5B%5D=000000&bg_col%5B%5D=A90078&bg_col%5B%5D=DB34A4&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_dir=H&bo_col%5B%5D=A90078&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[10] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=CFDCE9&bg_col%5B%5D=6199C7&bg_col%5B%5D=000000&bg_col%5B%5D=3983C2&bg_col%5B%5D=4BB8F1&bg_col%5B%5D=25548A&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=40&bg_col_pos%5B%5D=25&bg_col_dir=H&bo_col%5B%5D=6199C7&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[11] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=969696&bg_col%5B%5D=7A7A7A&bg_col%5B%5D=000000&bg_col%5B%5D=000000&bg_col%5B%5D=000000&bg_col%5B%5D=4E4E4E&bg_col%5B%5D=1C1C1C&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=35&bg_col_pos%5B%5D=3&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=3&bg_col_pos%5B%5D=20&bg_col_dir=H&bo_col%5B%5D=6199C7&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+  presets[12] = 'bg_type=1&bg_height=80&bg_width=600&text=&font_family=arial.ttf&font_size=14&font_color=333333&text_align=center&text_valign=middle&text_padding=8&corner_tl=1&corner_tr=1&corner_tl_width=8&corner_tr_width=8&corner_tl_height=8&corner_tr_height=8&corner_bl=1&corner_br=1&corner_bl_width=8&corner_br_width=8&corner_bl_height=8&corner_br_height=8&bg_col%5B%5D=F1B9B0&bg_col%5B%5D=F49C8D&bg_col%5B%5D=E86A55&bg_col%5B%5D=000000&bg_col%5B%5D=E92703&bg_col%5B%5D=FF6600&bg_col%5B%5D=C21B00&bg_col_pos%5B%5D=25&bg_col_pos%5B%5D=18&bg_col_pos%5B%5D=18&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=0&bg_col_pos%5B%5D=20&bg_col_pos%5B%5D=20&bg_col_dir=H&bo_col%5B%5D=A90078&bo_col_size%5B%5D=1&bo_col_pos%5B%5D=0&bo_col_dir=H';
+
+  if (!presets[typ]) return;
+  var objs = document.getElementsByClassName('bg_col_row');
+  for (var i=objs.length-1;i>=0;i--) {
+    rm_bg_col_row($(objs[i].id)); 
+  }
+  var objs = document.getElementsByClassName('bo_col_row');
+  for (var i=objs.length-1;i>=0;i--) {
+    rm_bo_col_row($(objs[i].id)); 
+  }
+
+  var bg_col = new Array();
+  var bg_col_pos = new Array();
+  var bo_col = new Array();
+  var bo_col_size = new Array();
+  var bo_col_pos = new Array();
+  $('corner_tl').checked = false;
+  $('corner_tr').checked = false;
+  $('corner_bl').checked = false;
+  $('corner_br').checked = false;
+
+  if (!$('enabledTools').checked) return;
+  
+  var preset = presets[typ];
+  ps001 = preset.split(/&/);
+  for (i=0; i < ps001.length; i++) {
+    ps001[i] = unescape(ps001[i]);
+    prop = ps001[i].split(/=/);
+    if (prop[0].match(/.*\[\].*/)) {
+      prop[0] = prop[0].replace(/\[\]/, '');
+      eval(prop[0] + '.push(\'' + prop[1] + '\')');
+    } else 
+    if (prop[0].match(/bo_col_dir/) || prop[0].match(/bg_col_dir/)) {
+      $(prop[0] + '_' + prop[1].toLowerCase()).checked = true;
+    } else
+    if ($(prop[0]).type == 'checkbox') {
+      $(prop[0]).checked = true;
+    } else {
+      if (prop[1]) {
+        $(prop[0]).value = unescape(prop[1]);
+      } else {
+        $(prop[0]).value = '';
+      }
+    }
+  }
+  if (bg_col.length) {
+    $('bg_col_0').value = bg_col[0];
+    $('bg_col_pos_0').value = bg_col_pos[0];
+    for (i=1; i<bg_col.length; i++) {
+      ad_bg_col_row(false);
+      $('bg_col_' + i).value = bg_col[i];
+      $('bg_col_pos_' + i).value = bg_col_pos[i];
+    }
+  }
+  if (bo_col.length) {
+    $('bo_col_0').value = bo_col[0];
+    $('bo_col_size_0').value = bo_col_size[0];
+    $('bo_col_pos_0').value = bo_col_pos[0];
+    for (i=1; i<bo_col.length; i++) {
+      ad_bo_col_row(false);
+      $('bo_col_' + i).value = bo_col[i];
+      $('bo_col_size_0').value = bo_col_size[0];
+      $('bo_col_pos_' + i).value = bo_col_pos[i];
+    }
+  }
+  CreateBackground();
+  return false;
+}
+
+function ad_bg_col_row(last_row) {
+  var objs = document.getElementsByClassName('bg_col_row');
+  var old_row = 0;
+  for (var i=0;i<objs.length;i++) {
+    var this_row = objs[i].id;
+    this_row = this_row.split(/_/);
+    this_row = parseInt(this_row[3]);
+    old_row = Math.max(old_row, this_row);
+  }
+  var new_row = old_row+1;
+
+  if (last_row) {
+    this_row = last_row.split(/_/);
+    old_row = parseInt(this_row[3]);
+  }
+ 
+  var tpl = '';
+  tpl += '<div class="bg_col_row" id=bg_col_row_' + new_row + '>';
+  tpl += 'Color: <input onfocus="colpicker(this)" onblur="closepicker(\'plugin\');" class=crtrs type="text" id=bg_col_' + new_row + ' name="bg_col[]" value="" style="width: 50px;"> ';
+  tpl += 'Height: <input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="bg_col_pos[]" id=bg_col_pos_' + new_row + ' value="' + new_row + '" style="width:20px;"> px ';
+  tpl += '<input type=button onclick="ad_bg_col_row(\'bg_col_row_' + new_row + '\')" value="+" style="width: 18px; color: #666666; background-color: #EEEEEE; border: 1px solid #CCCCCC; margin-top: 3px;">';
+  tpl += '<input type=button onclick="rm_bg_col_row(\'bg_col_row_' + new_row + '\')" value="-" style="width: 18px; color: #666666; background-color: #EEEEEE; border: 1px solid #CCCCCC; margin-top: 3px;">';
+  tpl += '</div>';
+  if (last_row) {
+    new Insertion.Before($(last_row), tpl);
+  } else {
+    new Insertion.After($('bg_col_row_' + old_row), tpl);
+  }
+  $('bg_col_' + new_row).value = $('bg_col_' + old_row).value;
+  $('bg_col_pos_' + new_row).value = 25;
+  if (objs.length >= 9) {
+    Element.hide($('btn_add_bg_col_row'));
+  }
+}
+
+function rm_bg_col_row(row) {
+  Element.remove($(row));
+  bg_col_rows--;
+  var objs = document.getElementsByClassName('bg_col_row');
+  if (objs.length < 10) {
+    Element.show($('btn_add_bg_col_row'));
+  }
+}
+
+function ad_bo_col_row(last_row, span_elem) {
+  var objs = document.getElementsByClassName('bo_col_row');
+  var old_row = 0;
+  for (var i=0;i<objs.length;i++) {
+    var this_row = objs[i].id;
+    this_row = this_row.split(/_/);
+    this_row = parseInt(this_row[3]);
+    old_row = Math.max(old_row, this_row);
+  }
+  var new_row = old_row+1;
+  var tpl = '';
+  tpl += '<div class="bo_col_row" id=bo_col_row_' + new_row + '>';
+  tpl += 'Color: <input onfocus="colpicker(this)" onblur="closepicker(\'plugin\');" class=crtrs type="text" id=bo_col_' + new_row + ' name="bo_col[]" value="" style="width: 50px;"> ';
+  //tpl += 'Size: <input class=crtrs type="text" name="bo_col_size[]" id=bo_col_size_' + new_row + ' value="' + $F('bo_col_size_0') + '" style="width:20px;" readonly=readonly disabled=disabled> px ';
+  tpl += 'Height: <input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="bo_col_pos[]" id=bo_col_pos_' + new_row + ' value="' + new_row + '" style="width:20px;"> px ';
+  //tpl += '<span onclick="rm_bo_col_row(\'bo_col_row_' + new_row + '\')">del</span>';
+  tpl += '<input type=button onclick="ad_bo_col_row(\'bo_col_row_' + new_row + '\')" value="+" style="width: 18px; color: #666666; background-color: #EEEEEE; border: 1px solid #CCCCCC; margin-top: 3px;">';
+  tpl += '<input type=button onclick="rm_bo_col_row(\'bo_col_row_' + new_row + '\')" value="-" style="width: 18px; color: #666666; background-color: #EEEEEE; border: 1px solid #CCCCCC; margin-top: 3px;">';
+  tpl += '</div>';
+  new Insertion.After($('bo_col_row_' + old_row), tpl);
+  if (objs.length >= 9) {
+    Element.hide($('btn_add_bo_col_row'));
+  }
+  $('bo_col_' + new_row).value = $('bo_col_' + old_row).value;
+  $('bo_col_pos_' + new_row).value = parseInt($('bo_col_pos_' + old_row).value) + 25;
+  if ($('bo_col_pos_' + new_row).value > 100) {
+    $('bo_col_pos_' + new_row).value = 100;
+  }
+}
+
+function rm_bo_col_row(row) {
+  Element.remove($(row));
+  bo_col_rows--;
+  var objs = document.getElementsByClassName('bg_col_row');
+  if (objs.length < 10) {
+    Element.show($('btn_add_bo_col_row'));
+  }
+}
+
+function bo_col_size_change() {
+  var elms = document.getElementsByName('bo_col_size[]');
+  for (i=0;i<elms.length;i++) {
+    if (i>0) {
+      elms[i].value = $F('bo_col_size_0');
+    }
+  }
+}
+
+function observeClickListener(evnt) {
+  var cl = evnt.target.id ? evnt.target.id : evnt.target.className;
+  if (!cl) {
+    if (evnt.target.parentNode && evnt.target.tagName == 'IMG') {
+      cl = evnt.target.parentNode.id ? evnt.target.parentNode.id : evnt.target.parentNode.className;
+    }
+  }
+  if (cl) {
+    if (cl.match(/slider/)) {
+      moSlider = true;
+    } else {
+      moSlider = false;
+    }
+    if (cl.match(/colorpicker/)) {
+      moPicker = true;
+    } else {
+      moPicker = false;
+    }
+  } else {
+    moSlider = false;
+    moPicker = false;
+  }
+  if (evnt) {
+    if (evnt.type == 'click' && evnt.target.tagName != 'INPUT') {
+      if (!moSlider && !moPicker) {
+        close_tools();
+      }
+    }
+  }
+}
+
+observeClickListener = observeClickListener.bindAsEventListener(this);
+Event.observe(document, "click", observeClickListener);
+Event.observe(document, "mousemove", observeClickListener);
+</script>
+<style>
+/* Generic Carousel Properties */
+.carousel {
+  position:relative;
+  clear:both;
+/*
+  left:20px;
+  margin-top:10px;
+  border:2px solid #555555;
+*/
+  background-color:#ffffff;
+}
+
+.carousel .navButton {
+  cursor:pointer;
+  display:block;
+  text-indent:-9999px;
+  background-repeat:none;
+  z-index:10;
+}
+
+.carousel .container {
+  position:absolute;
+  overflow:hidden;
+}
+
+.carousel .items {
+  position:absolute;
+}
+
+.carousel .item {
+  position:relative;
+  cursor:pointer;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+  -moz-opacity:0.7;
+  opacity:0.7;
+  list-style-type:none;
+  margin:0px;
+}
+
+.carousel .item.hover, .carousel .item.selected {
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+  -moz-opacity:1.0;
+  opacity:1.0;
+}
+
+/* Horizontal Carousel */
+#Carousel4 {
+  height:150px;
+  width:638px;
+  background-color: #EEEEEE;
+}
+
+#Carousel4 .container {
+  left:26px;
+  top:10px;
+  width:586px;
+  height:126px;
+  border: 2px inset;
+  background-color: #DDDDDD;
+}        
+
+#Carousel4 .items {
+  top:5px;
+  left:5px;
+  width:1800px;
+  height: 120px;
+}
+
+/*
+#Carousel4 .item .icon img {
+  position:relative; 
+  left:0px; 
+  width:105px !important;
+  height:65px;
+  cursor:pointer;
+}
+*/
+
+#Carousel4 .item .icon img {
+  position:relative; 
+  left:0px; 
+  cursor:pointer;
+}
+
+#Carousel4 .item {
+  width:111px !important;
+  height:120px;
+  margin-left: 3px;
+  margin-right: 3px;
+  float:left;
+  clear:right;
+}
+
+#Carousel4 .icon {
+  width:111px !important;
+  height: 115px; 
+  border: 1px outset #CCCCCC;
+  background-color: #FFFFFF;
+  /*
+  margin-left: 5px;
+  */
+}
+
+#Carousel4 .navButton {
+  position:absolute;
+  top:30px;
+  width:24px;
+  height:87px;
+}
+
+#Carousel4 .navButton.previous {  left:0px; background-image:url('images/button.left.png'); }
+#Carousel4 .navButton.next { right:0px; background-image:url('images/button.right.png'); }
+
+/* Hide data items from selector */
+#Carousel4 .item .key { display:none;}
+#Carousel4 .item .picture { display:none;}
+
+.panel {
+  display:;
+  background: transparent url(/images/bgpan.png) no-repeat center top;
+}
+
+.panelBottom {
+  height: 20px;
+  background: transparent url(/images/bgpan.png) no-repeat center bottom;
+}
+
+.panel h3 {
+  font-size: 14px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+#myContainer {
+  margin-bottom: 0;
+  padding-top: 0;
+  height: auto;
+}
+
+#typebox {
+  padding: 0;
+}
+
+#typebox img {
+  border: none;
+}
+
+.permanentLink a {
+  font-size: 14px;
+/*  font-weight: bold; */
+  color: #666666;
+  text-decoration: none;
+}
+
+.permanentLink {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+</style>
+<style type="text/css" media="screen">
+.yiggbutton {
+/*  float:left; */
+  float:right;
+  padding:3px 5px 5px 5px;
+}
+</style>
+<script language="javascript">
+<!--
+function exitwnd(s) {
+  if (document.cookie.match('tdycc=1')) return;
+  document.cookie = "tdycc=1; path=/;"
+  var url = 'http://tdy.cc/?r=creatr.cc%2Fbackgrounds%2F';
+  var par = 'toolbar=1,directories=1,menubar=1,scrollbars=1,resizable=1,width=' + screen.availWidth + ',height=' + screen.availHeight;
+  {wndh = window.open(url,'wndh',par);}
+  if (wndh) {
+    wndh.moveTo(0,0);
+    wndh.blur();
+    window.focus();
+  }
+}
+//-->
+</script> 	
+</head>
+<body onclick="showvalues();" onclick="close_tools();">
+<div id="header">
+<div id="description">
+<script>reddit_url='http://creatr.cc/backgrounds'</script>
+<script>reddit_title='Web 2.0 Background Generator'</script>
+<script language="javascript" src="http://reddit.com/button.js?t=2"></script>
+<script type="text/javascript">
+digg_url = 'http://creatr.cc/backgrounds';
+//digg_title = 'TITLE';
+//digg_bodytext = 'BODY';
+//digg_topic = 'TOPIC';
+</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>
+</div>
+<div class="yiggbutton">
+<script>
+yigg_url = 'http://creatr.cc/backgrounds/';
+</script>
+<script src="http://yigg.de/emb_ycount.js"></script>
+</div>
+<div id=booklets>
+<a href="http://ho.tli.st/post.php?tb=0.1.0&action=add&address=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&title=Web%202.0%20Background%20Generator&description=" target=_blank><img src="/images/hotlist.png"></a>
+<a href="http://del.icio.us/post?url=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&title=Web%202.0%20Background%20Generator" target=_blank><img src="/images/delicious.png"></a>
+<a href="http://www.furl.net/storeIt.jsp?u=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&t=Web%202.0%20Background%20Generator" target=_blank><img src="/images/furl.png"></a>
+<a href="http://www.scuttle.org/bookmarks.php/maxpower?action=add&address=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&title=Web%202.0%20Background%20Generator" target=_blank><img src="/images/scuttle.png"></a>
+<a href="http://blogmarks.net/my/new.php?mini=1&simple=1&url=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&title=Web%202.0%20Background%20Generator" target=_blank><img src="/images/blogmarks.png"></a>
+<a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&title=Web%202.0%20Background%20Generator"><img src="/images/icon_su.gif"></a>
+<a href="http://www.mister-wong.de/index.php?action=addurl&bm_url=http%3A%2F%2Fcreatr.cc%2Fbackgrounds%2F&bm_description=Web%202.0%20Background%20Generator"><img src="/images/wong18.gif"></a>
+<br>
+<br>
+<a href="http://ho.tli.st/help/" target=_blank>save the bookmark...</a><br>
+</div>
+</div>
+<div id=topbar>
+  <a href="/">Home</a>
+  <a href="/creatr/">Creatr</a>
+  <a href="/backgrounds/">Backgrounds</a>
+  <a href="/blogbutton/">Blogbutton</a>
+  <a href="/blog/">Blog</a>
+  <a href="/help/">Help</a>
+  <a href="/hof/">Hall of fame</a>
+  <a href="/about/">Contact</a>
+</div>
+<table border=0 cellspacing=10 cellpadding=5 width=100%>
+  <td align=center width=25% valign=top>
+<script type="text/javascript"><!--
+google_ad_client = "pub-5947457667333159";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "text_image";
+//2007-06-19: Logo Creatr L
+google_ad_channel = "9733138375";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_text = "333333";
+google_color_url = "666666";
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  </td>
+  <td align=center width=50% valign=top>
+  <div id=bodyMiddle>
+    <div id=generator>
+    <table border=0 cellspacing=0 cellpadding=0 width="100%"><tr><td><img src="images/blank.gif" width=0 height=250></td><td>
+    <div align=center id=myContainer>
+      <img id="previewimg" src="images/background-logo.png">
+    </div>
+    </td></tr>
+    <tr><td colspan=2>
+    <div class="permanentLink">
+      <table border=0 cellspacing=0 cellpadding=0 width="100%"><tr>
+        <td width="50%" align=center><a id="permaLink" href="#">Permanent Link</a></td>
+        <td width="50%" align=center><a id="saveasLink" href="#">Save Image</a></td>
+      </tr></table>
+    </div>
+    </td></tr>
+    </table>
+    <div id=typebox>
+      <div id="Carousel4" class="carousel">
+        <div class="button navButton previous" style="display:none;">Back</div>
+        <div class="button navButton next" style="display:none;">More</div>
+        <div class="container">
+          <div class="items">
+            <div class="item">
+              <div class="key caption">preset1</div>
+              <div class="icon" onclick="preset(1);" style="background: #ffffff url(images/presets/preset1.png) no-repeat 5px 15px;">
+                preset 1
+              </div>
+            </div>            
+            <div class="item">
+              <div class="key caption">preset2</div>
+              <div class="icon" onclick="preset(2);" style="background: #ffffff url(images/presets/preset2.png) no-repeat 5px 15px;">
+                preset 2
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset3</div>
+              <div class="icon" onclick="preset(3);" style="background: #ffffff url(images/presets/preset3.png) no-repeat 5px 15px;">
+                preset 3
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset4</div>
+              <div class="icon" onclick="preset(4);" style="background: #ffffff url(images/presets/preset4.png) no-repeat 5px 15px;">
+                preset 4
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset5</div>
+              <div class="icon" onclick="preset(5);" style="background: #ffffff url(images/presets/preset5.png) no-repeat 5px 15px;">
+                preset 5
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset6</div>
+              <div class="icon" onclick="preset(6);" style="background: #ffffff url(images/presets/preset6.png) no-repeat 5px 15px;">
+                preset 6
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset7</div>
+              <div class="icon" onclick="preset(7);" style="background: #ffffff url(images/presets/preset7.png) no-repeat 5px 15px;">
+                preset 7
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset8</div>
+              <div class="icon" onclick="preset(8);" style="background: #ffffff url(images/presets/preset8.png) no-repeat 5px 15px;">
+                preset 8
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset9</div>
+              <div class="icon" onclick="preset(9);" style="background: #ffffff url(images/presets/preset9.png) no-repeat 5px 15px;">
+                preset 9
+              </div>
+            </div>
+            <div class="item">
+              <div class="key caption">preset10</div>
+              <div class="icon" onclick="preset(10);" style="background: #ffffff url(images/presets/preset10.png) no-repeat 5px 15px;">
+                preset 10
+              </div>
+            </div>            
+            <div class="item">
+              <div class="key caption">preset11</div>
+              <div class="icon" onclick="preset(11);" style="background: #ffffff url(images/presets/preset11.png) no-repeat 5px 15px;">
+                preset 11
+              </div>
+            </div>            
+            <div class="item">
+              <div class="key caption">preset12</div>
+              <div class="icon" onclick="preset(12);" style="background: #ffffff url(images/presets/preset12.png) no-repeat 5px 15px;">
+                preset 12
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id=form>
+      <form name="controller" id="controller" target=preview onsubmit="CreateBackground(); return false;">
+      <input id="bg_type" type="hidden" name="bg_type" value="1">
+      <table border=0 cellspacing=0 cellpadding=0 width="100%"><tr><td align=center valign=top>
+      <div class=panel>
+        <h3>Size</h3>
+        Height: <input class=crtrs id=bg_height type="text" name="bg_height" value="160" style="width: 50px;">
+        Width: <input class=crtrs id=bg_width type="text" name="bg_width" value="320" style="width: 50px;">
+      </div>
+      <div class=panelBottom></div>
+      
+      <br /><br />
+      <div class=panel>
+      <h3>Title</h3>
+      <table border=0 cellpadding=2 cellspacing=0 width="270">
+        <tr>
+          <td class=label>Text:</td>
+          <td class=field><input class=crtr id=text type="text" name="text" value="My Famous title">
+          </td>
+        </tr>
+        <tr id="rFontFace" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Font Family:</td>
+          <td class=field>
+            <select class=crtr id=font_family type="text" name="font_family">
+<option value=default>Default</option>
+<option value=adventuresubtitles.ttf>Adventures Subtitles</option>
+<option value=andalemono.ttf>Andale Mono</option>
+<option value=arial.ttf>Arial</option>
+<option value=arialbd.ttf>Arial (bold)</option>
+<option value=arialbold.ttf>Arial Black</option>
+<option value=ariali.ttf>Arial (italic)</option>
+<option value=arialuni.ttf>Arial Unicode (chinese)</option>
+<option value=bookant.ttf>Book Antiqua</option>
+<option value=bookantbd.ttf>Book Antiqua (bold)</option>
+<option value=bookantbi.ttf>Book Antiqua (bold-italic)</option>
+<option value=bookanti.ttf>Book Antiqua (italic)</option>
+<option value=catull.ttf>Catull</option>
+<option value=catullb.ttf>Catull (bold)</option>
+<option value=catulli.ttf>Catull (italic)</option>
+<option value=catullm.ttf>Catull (middle)</option>
+<option value=comic.ttf>Comic</option>
+<option value=comicbd.ttf>Comic (bold)</option>
+<option value=courier.ttf>Courier New</option>
+<option value=courierbd.ttf>Courier New (bold)</option>
+<option value=courierbi.ttf>Courier New (bold-italic)</option>
+<option value=courieri.ttf>Courier New (italic)</option>
+<option value=dragonw.ttf>Dragonwick</option>
+<option value=floydian.ttf>Floydian</option>
+<option value=geneva.ttf>Geneva</option>
+<option value=marcelle.ttf>Marcelle</option>
+<option value=olympia.ttf>Olympia Light</option>
+<option value=persuasi.ttf> Persuasion</option>
+<option value=plasmatic.ttf>Plasmatic</option>
+<option value=tahoma.ttf>Tahoma</option>
+<option value=tahomabd.ttf>Tahoma (bold)</option>
+<option value=times.ttf>Times New Roman ()</option>
+<option value=timesbd.ttf>Times New Roman (bold)</option>
+<option value=timesbi.ttf>Times New Roman (bold-italic)</option>
+<option value=timesi.ttf>Times New Roman (italic)</option>
+<option value=timesk8.ttf>KOI8 Times</option>
+<option value=trebuc.ttf>Trebuchet </option>
+<option value=trebucbd.ttf>Trebuchet (bold)</option>
+<option value=trebucbi.ttf>Trebuchet (bold-italic)</option>
+<option value=trebucit.ttf>Trebuchet (italic)</option>
+<option value=verdana.ttf>Verdana</option>
+<option value=verdanab.ttf>Verdana (bold)</option>
+<option value=verdanai.ttf>Verdana (italic)</option>
+<option value=y2k.ttf>Year 2000</option>
+<option value=yahoo.ttf>Yahoo</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rFontSize" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Font Size:</td>
+          <td class=field>
+            <select class=crtr id=font_size type="text" name="font_size">
+              <option value="12">Default</option>
+              <option value="10">10px</option>
+              <option value="11">11px</option>
+              <option value="12">12px</option>
+              <option value="14">14px</option>
+              <option value="18">18px</option>
+              <option value="24">24px</option>
+              <option value="30">30px</option>
+              <option value="36">36px</option>
+              <option value="48">48px</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rFontColor2" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Font Color:</td>
+          <td class=field><input onfocus="colpicker(this)" onblur="closepicker('plugin');" class=crtr id=font_color type="text" name="font_color" value="000000"></td>
+        </tr>
+        <tr id="rFontSize" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Text HAlign:</td>
+          <td class=field>
+            <select class=crtr id=text_align name="text_align" id="text_align">
+              <option value="center">Center</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rFontSize" class="formrow ltype1 ltype2 ltype3 ltype4 ltype5">
+          <td class=label>Text VAlign:</td>
+          <td class=field>
+            <select class=crtr id=text_valign name="text_valign" id="text_valign">
+              <option value="middle">Middle</option>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+            </select>
+          </td>
+        </tr>
+        <tr id="rFontColor2" class="formrow ltype1 ltype3 ltype4 ltype5">
+          <td class=label>Text Padding:</td>
+          <td class=field><input class=crtr id=text_padding type="text" name="text_padding" value="3"></td>
+        </tr>
+      </table>
+      </div>
+      <div class=panelBottom></div>
+      <br /><br />
+      <div class=panel>
+      <h3>Corner</h3>
+      <table border=0 cellpadding=2 cellspacing=0 width="280">
+        <tr>
+          <td align=center>
+            <table border=0 cellpadding=0 cellspacing=2 width="100%">
+              <tr>
+                <td colspan=4 align=center><strong>Top</strong></td>
+              </tr>
+              <tr>
+                <td align=right><strong>Left</strong></td>
+                <td align=left><input id=corner_tl type="checkbox" name="corner_tl" value="1" checked=checked></td>
+                <td align=right><strong>Right</strong></td>
+                <td align=left><input id=corner_tr type="checkbox" name="corner_tr" value="1" checked=checked></td>
+              </tr>
+              <tr>
+                <td align=right>Width:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_tl_width" id=corner_tl_width value="10" style="width:20px;"> px</td>
+                <td align=right>Width:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_tr_width" id=corner_tr_width value="10" style="width:20px;"> px</td>
+              </tr>
+              <tr>
+                <td align=right>Height:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_tl_height" id=corner_tl_height value="10" style="width:20px;"> px</td>
+                <td align=right>Height:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_tr_height" id=corner_tr_height value="10" style="width:20px;"> px</td>
+              </tr>
+              <tr>
+                <td colspan=4 align=center><strong>Bottom</strong></td>
+              </tr>
+              <tr>
+                <td align=right><strong>Left</strong></td>
+                <td align=left nowrap=nowrap><input id=corner_bl type="checkbox" name="corner_bl" value="1" checked=checked></td>
+                <td align=right><strong>Right</strong></td>
+                <td align=left nowrap=nowrap><input id=corner_br type="checkbox" name="corner_br" value="1" checked=checked></td>
+              </tr>
+              <tr>
+                <td align=right>Width:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_bl_width" id=corner_bl_width value="10" style="width:20px;"> px</td>
+                <td align=right>Width:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_br_width" id=corner_br_width value="10" style="width:20px;"> px</td>
+              </tr>
+              <tr>
+                <td align=right>Height:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_bl_height" id=corner_bl_height value="10" style="width:20px;"> px</td>
+                <td align=right>Height:</td>
+                <td align=left><input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" class=crtrs type="text" name="corner_br_height" id=corner_br_height value="10" style="width:20px;"> px</td>
+              </tr>
+            </table>
+            <br />
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class=panelBottom></div>
+      </td><td align=center valign=top>
+      <div class=panel>
+      <h3>Background</h3>
+      <table border=0 cellpadding=2 cellspacing=0>
+        <tr>
+          <td class=field align=left>
+            <div id=bg_col_row_0 style="text-align: left;">
+              Color: <input onfocus="colpicker(this)" onblur="closepicker('plugin');" class=crtrs type="text" id=bg_col_0 name="bg_col[]" value="FFFFD6" style="width: 50px;">
+              <input type="hidden" name="bg_col_pos[]" id=bg_col_pos_0 value="0"> (Default)
+            </div>
+            <div id=bg_col_direction style="text-align: center; margin-top: 10px;">
+              <table align=center border=0 cellspacing=2 cellpadding=0 style="margin: 0 auto;"><tr>
+              <td><input type=radio name="bg_col_dir" id="bg_col_dir_h" value="H" checked=checked></td>
+              <td>Horizontal</td>
+              <td>&nbsp;&nbsp;</td>
+              <td><input type=radio name="bg_col_dir" id="bg_col_dir_v" value="V"></td>
+              <td>Vertical</td>
+              </tr></table>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+            <input type=button id="btn_add_bg_col_row" onclick="ad_bg_col_row(false);" value="Add Color" style="width: 160px; height: 28px; font-size: 12px; color: #666666; background-color: #EEEEEE; border: 2px solid #CCCCCC;">
+            </div>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class=panelBottom></div>
+      <br /><br />
+      <div class=panel>
+      <h3>Border</h3>
+      <table border=0 cellpadding=2 cellspacing=0>
+        <tr>
+          <td class=field align=left>
+            <div id=bo_col_row_0 style="text-align: left">
+              Color: <input onfocus="colpicker(this)" onblur="closepicker('plugin');" class=crtrs type="text" name="bo_col[]" id=bo_col_0 value="CCCCCC" style="width: 50px;">
+              &nbsp;&nbsp;&nbsp;Size: <input onfocus="show_slider_plug(this);" onblur="close_slider_plug();" onchange="bo_col_size_change();" class=crtrs type="text" name="bo_col_size[]" id=bo_col_size_0 value="1" style="width:20px;"> px
+              <input type="hidden" name="bo_col_pos[]" id=bo_col_pos_0 value="0"> (Default)
+            </div>
+            <div id=bo_col_direction style="text-align: center; margin-top: 10px;">
+              <table align=center border=0 cellspacing=2 cellpadding=0 style="margin: 0 auto;"><tr>
+              <td><input type=radio name="bo_col_dir" id="bo_col_dir_h" value="H" checked=checked></td>
+              <td>Horizontal</td>
+              <td>&nbsp;&nbsp;</td>
+              <td><input type=radio name="bo_col_dir" id="bo_col_dir_v" value="V"></td>
+              <td>Vertical</td>
+              </tr></table>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+            <input type=button id="btn_add_bo_col_row" onclick="ad_bo_col_row(false);" value="Add Border Color" style="width: 160px; height: 28px; font-size: 12px; color: #666666; background-color: #EEEEEE; border: 2px solid #CCCCCC;">
+            </div>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class=panelBottom></div>
+      <br clear=all /><br />
+      <table border=0 cellpadding=0 cellspacing=0 width="280">
+        <tr>
+          <td align=center>
+            <input type="submit" value="Create Image" style="width: 260px; height: 60px;font-size: 24px; color: #666666; background-color: #EEEEEE; border: 2px solid #CCCCCC;">
+            <p>&nbsp;</p>
+          </td>
+        </tr>
+        <tr>
+          <td align=center>
+            <table align=center border=0 cellpadding=0 cellspacing=2><tr>
+              <td align=right>
+                <input onclick="toggleTools();" id=enabledTools type="checkbox" value="1" checked=checked>
+              </td>
+              <td align=left>
+                Visual Tools enabled
+              </td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+      </td></tr></table>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+  </td>
+  <td align=right width=25% valign=top>
+<table border=0 cellspacing=0 cellpadding=0 width="300">
+  <tr>
+    <td align="left">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="8808841">
+      <input type="image" src="https://www.paypal.com/en_US/DE/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </td>
+    <td align="right">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="8808721">
+      <input type="image" src="https://www.paypal.com/en_US/DE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </td>
+  </tr>
+</table>
+<br />
+<br />
+<a target="_blank" href="http://sponsorandwin.com/"><img src="http://sponsorandwin.com/images/banner-300x250_v4.gif" alt="Sponsor and Win" border="0"></a>
+<br />
+<br />
+  </td>
+</table>
+
+<div id="slider_plug" class="carpe_horizontal_slider_display_combo" style="display: none;">
+  <div class="carpe_slider_display_holder">
+    <div style="margin-left: 5px;">
+      <input class="carpe_slider_display" id="display1" from="0" to="100" value="25" type="text" style="margin: auto;">
+    </div>%
+  </div>
+  <div class="carpe_horizontal_slider_track">
+    <div class="carpe_slider_slit">&nbsp;</div>
+    <div style="left: 0px; top: 0px;" class="carpe_slider" id="slider1" display="display1">&nbsp;</div>
+  </div>
+</div>
+
+<iframe id="pluginbg" frameborder="0" hspace="0" marginheight="0" marginwidth="0"></iframe>
+<div id="plugin" onmousedown="HSVslide('drag','plugin',event)" style="TOP: 42px; LEFT: 430px; Z-INDEX: 20; DISPLAY: none;">
+ <div id="plugCUR"></div><div id="plugHEX" onclick="copycolor(); stop=0; setTimeout('stop=1',100);">FFFFFF</div><div id="plugCLOSE" onclick="closepicker('plugin')">CLOSE</div><div id="plugOK" onclick="copycolor();">OK</div><br>
+ <div id="SV" onmousedown="HSVslide('SVslide','plugin',event)" title="Saturation + Value">
+ <div id="SVslide" style="TOP: -4px; LEFT: -4px;"><br /></div>
+ </div>
+ <form id="H" onmousedown="HSVslide('Hslide','plugin',event)" title="Hue">
+  <div id="Hslide" style="TOP: -7px; LEFT: -8px;"><br /></div>
+  <div id="Hmodel"></div>
+ </form>
+</div>
+<script language="javascript" type="text/javascript">
+function init() {
+  if(!_os) {
+    setTimeout(init, 50);
+    return;
+  }
+  _os.appVersion = "0.2.1";
+  _os.requireAll('UI', ['behaviors/model.js'], {});
+  preset(0);
+}
+init();
+</script>
+<a href="http://www.counter-service.de/" title="Counter" onclick="window.open(this.href);return(false);">
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://counter.sc/" : "http://counter.sc/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 40;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p>Counter <img src="http://counter.sc/piwik.php?idsite=40" style="border:0" alt=""/></p></noscript></object></a>
+</body>
+</html>

@@ -1,0 +1,221 @@
+* html {
+  height: 1%;
+}
+
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  font-size: 100.01%;
+  height: 100%;
+  text-align: left;
+  background-color: #FFFFFF;
+  color: #555555;
+}
+
+body, p, td, div, input, select {
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+}
+
+#header {
+  margin: 0 0 0 20px;
+  height: 140px;
+  background: #ffffff url('/images/LogoCreator.png') no-repeat top left;
+}
+
+#description {
+  position: absolute;
+  right: 80px;
+  top: 10px;
+}
+
+#booklets {
+  position: absolute;
+  right: 190px;
+  top: 10px;
+}
+
+#booklets img {
+  border: none;
+  padding: 3px;
+}
+
+#topbar {
+  text-align: right;
+  background-color: #dddddd;
+  border: 1px solid #bbbbbb;
+  padding:5px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+#topbar a {
+  color: #999999;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+}
+
+#topbar a:hover {
+  color: #000088;
+  text-decoration: underline;
+}
+
+a.hl {
+  color: #999999;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+a.hl:hover {
+  color: #000088;
+  text-decoration: underline;
+}
+#bodyMain {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#bodyLeft {
+  float: left;
+  padding-left:15px;
+}
+
+#bodyMiddle {
+  width: 640px;
+  margin: auto;
+}
+
+#myContainer {
+/*
+  padding-top: 20px;
+  margin-bottom: 20px;
+  height: 240px;
+*/
+}
+
+#generator {
+  text-align: center;
+  border: 1px solid #cccccc;
+}
+
+#form {
+  border-top: 1px solid #cccccc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#form2 {
+  margin:auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#typebox {
+  border-top: 1px solid #cccccc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align:center;
+}
+
+#typebox img {
+/*  border: 3px solid #cccccc; */
+  border: 1px outset #cccccc;
+  cursor: pointer;
+}
+
+td.label {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  width: 100px;
+}
+
+td.rlabel {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+  width: 100px;
+}
+
+#myButton {
+  height:100px;
+}
+
+select.crtr {
+  width: 149px;
+}
+
+input.crtr {
+  width: 145px;
+}
+
+input.crtrs {
+  width: 63px;
+}
+
+div {
+/*  border: 1px solid #cccccc; */
+}
+
+img {
+/*  border: 1px solid #cc0000; */
+}
+
+table {
+/*  border: 1px solid #cc0000; */
+}
+
+#myContainer {
+/*  background: #ccccff; */
+}
+
+#newsticker {
+  background: #ffffaf;
+  background: #ffffff;
+  position: relative;
+  width: 300px;
+}
+
+#newsticker ul {
+  border: 1px solid #fcf498;
+  border: none;
+  list-style: none;
+  min-height: 1.6em;
+  padding: 10px 15px;
+  padding: 0;
+  /*
+  padding-right: 30px;
+  */
+}
+
+* html #newsticker ul {
+  height: 1.6em;
+  overflow: visible;
+}
+
+#newsticker li.error {
+  color: #f00;
+}
+
+#newsticker #togglenewsticker {
+  background: transparent url("icon_closenewsticker.gif") no-repeat 0 0;
+  overflow: hidden;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  width: 14px;
+  height: 14px;
+  text-indent: 20px;
+  outline: none;
+}
+
+* html #newsticker #togglenewsticker {
+  right: 30px;
+}
